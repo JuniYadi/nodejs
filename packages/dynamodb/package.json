@@ -16,7 +16,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
-    "@juniyadi/eslint": "workspace:*",
+    "eslint-config-juniyadi": "workspace:*",
     "@juniyadi/tsconfig": "workspace:*",
     "@types/node": "^20.4.9",
     "eslint": "^8.15.0",
