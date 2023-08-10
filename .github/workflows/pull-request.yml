@@ -1,4 +1,4 @@
-name: Release
+name: Check Pull Request
 
 on:
   pull_request:
@@ -6,7 +6,6 @@ on:
       - main
     types:
       - opened
-      - synchronize
       - reopened
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
