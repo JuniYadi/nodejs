@@ -13,13 +13,18 @@
     "build": "tsup src/index.ts --format esm,cjs --dts --external react",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external react",
     "lint": "eslint \"src/**/*.ts*\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "eslint-config-juniyadi": "workspace:*",
     "@juniyadi/tsconfig": "workspace:*",
+    "@types/jest": "^29.5.3",
     "@types/node": "^20.4.9",
     "eslint": "^8.15.0",
+    "eslint-config-juniyadi": "workspace:*",
+    "jest": "^29.6.2",
+    "ts-jest": "^29.1.1",
     "tsup": "^5.10.1",
     "typescript": "^4.5.3"
   },

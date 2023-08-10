@@ -1,14 +1,17 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["DYNAMODB_TABLE", "AWS_REGION"],
   "pipeline": {
     "build": {
-      "env": ["DYNAMODB_TABLE", "AWS_REGION"],
       "outputs": ["dist/**", "storybook-static/**"],
       "dependsOn": ["^build"]
     },
     "test": {
       "outputs": ["coverage/**"],
       "dependsOn": []
+    },
+    "test:watch": {
+      "cache": false
     },
     "lint": {},
     "dev": {
