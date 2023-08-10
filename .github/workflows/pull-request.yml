@@ -1,15 +1,19 @@
 name: Release
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  release:
-    name: Release
+  check:
+    name: Check PR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
