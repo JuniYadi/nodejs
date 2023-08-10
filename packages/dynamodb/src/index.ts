@@ -6,6 +6,8 @@ export const main = async () => {
   const command = new ListTablesCommand({});
 
   const response = await client.send(command);
-  console.log(response.TableNames.join("\n"));
+
+  console.log("Success", response.TableNames);
+
   return response;
 };
