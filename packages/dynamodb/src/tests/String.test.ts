@@ -1,14 +1,13 @@
 import { String } from "../decorator/String";
 
 describe("String decorator", () => {
-  class TestClass {
-    @String()
-    public name: string;
-  }
-
-  it('should log "String" with the target and property key', () => {
+  it('should log "String", target, and propertyKey to the console', () => {
     const consoleSpy = jest.spyOn(console, "log");
-    const testInstance = new TestClass();
-    expect(consoleSpy).toHaveBeenCalledWith("String", testInstance, "name");
+    const target = {};
+    const propertyKey = "testProperty";
+
+    String()(target, propertyKey);
+
+    expect(consoleSpy).toHaveBeenCalledWith("String", target, propertyKey);
   });
 });
