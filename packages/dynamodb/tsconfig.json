@@ -2,6 +2,7 @@
   "extends": "@juniyadi/tsconfig/node16.json",
   "compilerOptions": {
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false
   },
   "include": ["."],
