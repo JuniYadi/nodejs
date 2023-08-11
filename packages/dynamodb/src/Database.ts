@@ -1,6 +1,5 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { QueryCommand } from "@aws-sdk/lib-dynamodb";
-import { String } from "./decorator/String";
+import { DynamoDBDocumentClient, QueryCommand } from "@aws-sdk/lib-dynamodb";
 
 interface DatabaseOptions {
   tableName: string;
@@ -10,7 +9,7 @@ interface DatabaseOptions {
 
 export class Database {
   static options: DatabaseOptions = {} as DatabaseOptions;
-  public client: DynamoDBClient = {} as DynamoDBClient;
+  static client: DynamoDBDocumentClient;
 
   pk: string = "";
 
@@ -36,9 +35,6 @@ export class Database {
    */
   static limitData: number = 15;
 
-  @String()
-  private sk: string;
-
   constructor(options: DatabaseOptions) {
     // init table name
     if (options.tableName) {
@@ -59,12 +55,12 @@ export class Database {
     }
 
     // init dynamodb client
-    this.client = new DynamoDBClient({
+    const ddb = new DynamoDBClient({
       region: Database.options.region,
       endpoint: options.endpoint || undefined,
     });
 
-    this.sk = "data";
+    Database.client = DynamoDBDocumentClient.from(ddb);
   }
 
   public static where(val: string) {
@@ -98,7 +94,8 @@ export class Database {
         "#pk": "pk",
       },
       Limit: Database.limitData,
-      ConsistentRead: true,
     });
+
+    return this.client.send(commands);
   }
 }
