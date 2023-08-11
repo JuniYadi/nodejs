@@ -18,20 +18,22 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
+    "@aws-sdk/lib-dynamodb": "^3.388.0",
     "@juniyadi/tsconfig": "workspace:*",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.9",
-    "eslint": "^8.15.0",
+    "eslint": "^8.46.0",
     "eslint-config-juniyadi": "workspace:*",
     "jest": "^29.6.2",
     "ts-jest": "^29.1.1",
-    "tsup": "^5.10.1",
-    "typescript": "^4.5.3"
+    "tsup": "^5.12.9",
+    "typescript": "^4.9.5"
   },
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "@aws-sdk/client-dynamodb": "^3.388.0"
+    "@aws-sdk/client-dynamodb": "^3.388.0",
+    "@aws-sdk/lib-dynamodb": "^3.388.0"
   }
 }
