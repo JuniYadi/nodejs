@@ -1,5 +1,18 @@
 {
   "extends": "@juniyadi/tsconfig/node16.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false
+  },
   "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": [
+    "dist",
+    "build",
+    "coverage",
+    "node_modules",
+    "src/tests",
+    "src/**/*.test.ts",
+    "src/**/*.mock.ts"
+  ]
 }

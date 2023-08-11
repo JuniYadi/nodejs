@@ -6,6 +6,7 @@ on:
       - main
     types:
       - opened
+      - synchronize
       - reopened
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
