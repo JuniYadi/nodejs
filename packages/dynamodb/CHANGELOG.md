@@ -1,5 +1,11 @@
 # @juniyadi/dynamodb
 
+## 0.1.2
+
+### Patch Changes
+
+- 57fce19: Update Database Query
+
 ## 0.1.1
 
 ### Patch Changes
