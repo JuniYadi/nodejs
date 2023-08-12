@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 0.0.3
+
+### Patch Changes
+
+- 0482320: Cognito unitest fixed
+
 ## 0.0.2
 
 ### Patch Changes
