@@ -8,7 +8,7 @@ module.exports = {
   transformIgnorePatterns: ["node_modules/(?!troublesome-dependency/.*)"],
   coverageDirectory: "./coverage/",
   coverageReporters: ["json", "lcov", "html"],
-  collectCoverageFrom: ["packages/**/src/**/*.ts"],
+  collectCoverageFrom: ["./src/**"],
   testPathIgnorePatterns: ["node_modules/", "dist/"],
   moduleFileExtensions: ["ts", "js"],
 };
