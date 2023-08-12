@@ -4,7 +4,12 @@ import {
   CognitoIdentityProviderClient,
   AdminSetUserPasswordCommand,
   AdminSetUserPasswordCommandOutput,
+  AdminDisableUserCommand,
+  AdminDisableUserCommandOutput,
+  AdminDeleteUserCommand,
+  AdminDeleteUserCommandOutput,
 } from "@aws-sdk/client-cognito-identity-provider";
+import { randomBytes } from "crypto";
 
 export interface ICognito {
   region?: string;
@@ -51,14 +56,7 @@ export class Cognito {
    * @returns string
    */
   public randomPassword = (length = 12): string => {
-    const chars =
-      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    let pass = "";
-    for (let x = 0; x < length; x++) {
-      const i = Math.floor(Math.random() * chars.length);
-      pass += chars.charAt(i);
-    }
-    return pass;
+    return randomBytes(256).toString("hex").slice(0, length);
   };
 
   /**
@@ -136,6 +134,7 @@ export class Cognito {
    * Change user password in Cognito User Pool
    * @param username - Username of the user
    * @param password - New password for the user
+   * @returns Promise<AdminSetUserPasswordCommandOutput>
    */
   public changePassword = async (
     username: string,
@@ -148,11 +147,41 @@ export class Cognito {
       Permanent: true,
     });
 
-    try {
-      const response = await this.cognitoIdentityProvider.send(command);
-      return response;
-    } catch (error) {
-      throw error;
-    }
+    return this.cognitoIdentityProvider.send(command);
+  };
+
+  /**
+   * Disable a user in Cognito User Pool
+   * @param username - Username of the user
+   * @returns Promise<AdminDisableUserCommandOutput>
+   */
+  public disableUser = async (
+    username: string
+  ): Promise<AdminDisableUserCommandOutput> => {
+    const command = new AdminDisableUserCommand({
+      UserPoolId: this.userPoolId,
+      Username: username,
+    });
+
+    return this.cognitoIdentityProvider.send(command);
+  };
+
+  /**
+   * Delete a user in Cognito User Pool
+   * @param username - Username of the user
+   * @returns Promise<AdminDeleteUserCommandOutput>
+   */
+  public deleteUser = async (
+    username: string
+  ): Promise<AdminDeleteUserCommandOutput> => {
+    // Disable the user first
+    await this.disableUser(username);
+
+    const command = new AdminDeleteUserCommand({
+      UserPoolId: this.userPoolId,
+      Username: username,
+    });
+
+    return this.cognitoIdentityProvider.send(command);
   };
 }
