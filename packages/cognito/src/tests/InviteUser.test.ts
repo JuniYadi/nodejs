@@ -1,4 +1,4 @@
-import { Cognito, ICognitoInviteUser } from "./Cognito";
+import { Cognito, ICognitoInviteUser } from "../Cognito";
 import {
   AdminCreateUserCommand,
   CognitoIdentityProviderClient,
