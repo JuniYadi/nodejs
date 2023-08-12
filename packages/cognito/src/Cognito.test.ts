@@ -1,7 +1,6 @@
-import { Cognito, ICognitoInviteUser } from "../Cognito";
+import { Cognito, ICognitoInviteUser } from "./Cognito";
 import {
   AdminCreateUserCommand,
-  AdminSetUserPasswordCommand,
   CognitoIdentityProviderClient,
 } from "@aws-sdk/client-cognito-identity-provider";
 
