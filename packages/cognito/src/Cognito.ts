@@ -45,6 +45,10 @@ export class Cognito {
       opts?.userPoolId || process.env.COGNITO_USER_POOL_ID || "";
     this.clientId = opts?.clientId || process.env.COGNITO_CLIENT_ID || "";
 
+    if (!this.region) throw new Error("AWS Region is required");
+    if (!this.userPoolId) throw new Error("Cognito User Pool ID is required");
+    if (!this.clientId) throw new Error("Cognito Client ID is required");
+
     this.cognitoIdentityProvider = new CognitoIdentityProviderClient({
       region: this.region,
     });
