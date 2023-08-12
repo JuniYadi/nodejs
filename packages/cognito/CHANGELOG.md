@@ -1,5 +1,13 @@
 # @juniyadi/cognito
 
+## 0.0.2
+
+### Patch Changes
+
+- 976ea1a: Update Cognito - Disable User
+  Update Cognito - Delete User
+  Update Cognito - Unit Test
+
 ## 0.0.1
 
 ### Patch Changes
