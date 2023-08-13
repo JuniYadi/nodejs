@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 0.1.0
+
+### Minor Changes
+
+- a147914: Update Cognito - List or Search User
+
 ## 0.0.3
 
 ### Patch Changes
