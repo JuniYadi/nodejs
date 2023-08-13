@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 0.3.0
+
+### Minor Changes
+
+- 27dc24d: Update Cognito Bundler
+
 ## 0.2.0
 
 ### Minor Changes
