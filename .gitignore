@@ -12,3 +12,5 @@ server/dist
 public/dist
 storybook-static/
 coverage/
+docs/
+apps/aws

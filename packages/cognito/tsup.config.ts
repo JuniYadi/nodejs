@@ -1,5 +1,4 @@
 import { defineConfig } from "tsup";
-import type { Options } from "tsup";
 
 const env = process.env.NODE_ENV || "development";
 
