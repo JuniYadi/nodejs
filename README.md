@@ -1,5 +1,9 @@
 # Nodejs Package
 
+![Codecov](https://img.shields.io/codecov/c/github/juniyadi/nodejs)
+![GitHub issues](https://img.shields.io/github/issues/juniyadi/nodejs)
+![GitHub](https://img.shields.io/github/license/juniyadi/nodejs)
+
 This repository is wrapper from another packages. The idea is to make easy to use when integrated to third party.
 
 ## Documentation

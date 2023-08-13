@@ -8,6 +8,9 @@ on:
       - opened
       - synchronize
       - reopened
+    paths-ignore:
+      - ".changeset/**"
+      - "**.md"
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
