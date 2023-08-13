@@ -9,6 +9,11 @@
   "files": [
     "dist/**"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JuniYadi/nodejs",
+    "directory": "packages/cognito"
+  },
   "scripts": {
     "docs": "typedoc --out docs src/index.ts",
     "build": "cross-env NODE_ENV=production tsup",

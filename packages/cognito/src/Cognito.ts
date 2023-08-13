@@ -8,6 +8,7 @@ import {
   AdminDisableUserCommandOutput,
   AdminDeleteUserCommand,
   AdminDeleteUserCommandOutput,
+  ListUsersCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { randomBytes } from "crypto";
 
@@ -39,6 +40,16 @@ export class Cognito {
   public clientId: string;
   public cognitoIdentityProvider: CognitoIdentityProviderClient;
 
+  /**
+   * Create a new Cognito instance
+   * @param opts
+   * @example
+   * const cognito = new Cognito({
+   *  region: "us-east-1",
+   *  userPoolId: "us-east-1_123456789",
+   *  clientId: "12345678901234567890",
+   * });
+   */
   constructor(opts?: ICognito) {
     this.region = opts?.region || process.env.AWS_REGION || "";
     this.userPoolId =
@@ -58,6 +69,9 @@ export class Cognito {
    * Generate a random password of a given length
    * @param length
    * @returns string
+   * @example
+   * const password = randomPassword(12);
+   * console.log(password);
    */
   public randomPassword = (length = 12): string => {
     return randomBytes(256).toString("hex").slice(0, length);
@@ -139,6 +153,11 @@ export class Cognito {
    * @param username - Username of the user
    * @param password - New password for the user
    * @returns Promise<AdminSetUserPasswordCommandOutput>
+   * @example
+   * const cognito = new Cognito();
+   * const users = await cognito.changePassword("johndoe@example.com", "newPassword");
+   * console.log(users.Users);
+   * @see https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserPassword.html
    */
   public changePassword = async (
     username: string,
@@ -158,6 +177,11 @@ export class Cognito {
    * Disable a user in Cognito User Pool
    * @param username - Username of the user
    * @returns Promise<AdminDisableUserCommandOutput>
+   * @example
+   * const cognito = new Cognito();
+   * const users = await cognito.disableUser("johndoe@example.com");
+   * console.log(users.Users);
+   * @see https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminDisableUser.html
    */
   public disableUser = async (
     username: string
@@ -174,6 +198,11 @@ export class Cognito {
    * Delete a user in Cognito User Pool
    * @param username - Username of the user
    * @returns Promise<AdminDeleteUserCommandOutput>
+   * @example
+   * const cognito = new Cognito();
+   * const users = await cognito.deleteUser("johndoe@example.com");
+   * console.log(users.Users);
+   * @see https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminDeleteUser.html
    */
   public deleteUser = async (
     username: string
@@ -184,6 +213,25 @@ export class Cognito {
     const command = new AdminDeleteUserCommand({
       UserPoolId: this.userPoolId,
       Username: username,
+    });
+
+    return this.cognitoIdentityProvider.send(command);
+  };
+
+  /**
+   * List for users in Cognito User Pool
+   * @param opts
+   * @returns Promise<ListUsersCommandOutput>
+   * @example
+   * const cognito = new Cognito();
+   * const users = await cognito.listUsers({ email: "johndoe@example.com" });
+   * console.log(users.Users);
+   * @see https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ListUsers.html
+   */
+  public listUsers = async (filter?: string) => {
+    const command = new ListUsersCommand({
+      UserPoolId: this.userPoolId,
+      Filter: filter || undefined,
     });
 
     return this.cognitoIdentityProvider.send(command);
