@@ -21,7 +21,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">Cognito</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L37">Cognito.ts:37</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L40">Cognito.ts:40</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -40,7 +40,8 @@
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Methods</h3>
-<div class="tsd-index-list"><a href="_juniyadi_cognito.Cognito.html#changePassword" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-2048"><rect fill="var(--color-icon-background)" stroke="#FF4DB8" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M9.162 16V7.24H10.578L11.514 10.072C11.602 10.328 11.674 10.584 11.73 10.84C11.794 11.088 11.842 11.28 11.874 11.416C11.906 11.28 11.954 11.088 12.018 10.84C12.082 10.584 12.154 10.324 12.234 10.06L13.122 7.24H14.538V16H13.482V12.82C13.482 12.468 13.49 12.068 13.506 11.62C13.53 11.172 13.558 10.716 13.59 10.252C13.622 9.78 13.654 9.332 13.686 8.908C13.726 8.476 13.762 8.1 13.794 7.78L12.366 12.16H11.334L9.894 7.78C9.934 8.092 9.97 8.456 10.002 8.872C10.042 9.28 10.078 9.716 10.11 10.18C10.142 10.636 10.166 11.092 10.182 11.548C10.206 12.004 10.218 12.428 10.218 12.82V16H9.162Z" fill="var(--color-text)"></path></g></svg><span>change<wbr/>Password</span></a>
+<div class="tsd-index-list"><a href="_juniyadi_cognito.Cognito.html#addUserToGroup" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-2048"><rect fill="var(--color-icon-background)" stroke="#FF4DB8" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M9.162 16V7.24H10.578L11.514 10.072C11.602 10.328 11.674 10.584 11.73 10.84C11.794 11.088 11.842 11.28 11.874 11.416C11.906 11.28 11.954 11.088 12.018 10.84C12.082 10.584 12.154 10.324 12.234 10.06L13.122 7.24H14.538V16H13.482V12.82C13.482 12.468 13.49 12.068 13.506 11.62C13.53 11.172 13.558 10.716 13.59 10.252C13.622 9.78 13.654 9.332 13.686 8.908C13.726 8.476 13.762 8.1 13.794 7.78L12.366 12.16H11.334L9.894 7.78C9.934 8.092 9.97 8.456 10.002 8.872C10.042 9.28 10.078 9.716 10.11 10.18C10.142 10.636 10.166 11.092 10.182 11.548C10.206 12.004 10.218 12.428 10.218 12.82V16H9.162Z" fill="var(--color-text)"></path></g></svg><span>add<wbr/>User<wbr/>To<wbr/>Group</span></a>
+<a href="_juniyadi_cognito.Cognito.html#changePassword" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>change<wbr/>Password</span></a>
 <a href="_juniyadi_cognito.Cognito.html#deleteUser" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>delete<wbr/>User</span></a>
 <a href="_juniyadi_cognito.Cognito.html#disableUser" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>disable<wbr/>User</span></a>
 <a href="_juniyadi_cognito.Cognito.html#inviteUser" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>invite<wbr/>User</span></a>
@@ -67,31 +68,61 @@
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L53">Cognito.ts:53</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L56">Cognito.ts:56</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member"><a id="clientId" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>client<wbr/>Id</span><a href="#clientId" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">client<wbr/>Id</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L40">Cognito.ts:40</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L43">Cognito.ts:43</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="cognitoIdentityProvider" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>cognito<wbr/>Identity<wbr/>Provider</span><a href="#cognitoIdentityProvider" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">cognito<wbr/>Identity<wbr/>Provider</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">CognitoIdentityProviderClient</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L41">Cognito.ts:41</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L44">Cognito.ts:44</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="region" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>region</span><a href="#region" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">region</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L38">Cognito.ts:38</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L41">Cognito.ts:41</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="userPoolId" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>user<wbr/>Pool<wbr/>Id</span><a href="#userPoolId" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">user<wbr/>Pool<wbr/>Id</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L39">Cognito.ts:39</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L42">Cognito.ts:42</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
+<section class="tsd-panel tsd-member"><a id="addUserToGroup" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>add<wbr/>User<wbr/>To<wbr/>Group</span><a href="#addUserToGroup" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="addUserToGroup.addUserToGroup-1"><span class="tsd-kind-call-signature">add<wbr/>User<wbr/>To<wbr/>Group</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">username</span>, <span class="tsd-kind-parameter">groupName</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">AdminAddUserToGroupCommandOutput</span><span class="tsd-signature-symbol">&gt;</span><a href="#addUserToGroup.addUserToGroup-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Add a user to a group in Cognito User Pool</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">username</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>Username of the user</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li>
+<li>
+<h5><span class="tsd-kind-parameter">groupName</span>: <span class="tsd-signature-type">string</span></h5>
+<div class="tsd-comment tsd-typography"><p>Name of the group</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">AdminAddUserToGroupCommandOutput</span><span class="tsd-signature-symbol">&gt;</span></h4><p>Promise<AdminAddUserToGroupCommandOutput></p>
+
+<div class="tsd-comment tsd-typography">
+<h4>Example</h4><pre><code class="language-ts"><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">cognito</span><span class="hl-1"> = </span><span class="hl-0">new</span><span class="hl-1"> </span><span class="hl-3">Cognito</span><span class="hl-1">();</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">users</span><span class="hl-1"> = </span><span class="hl-6">await</span><span class="hl-1"> </span><span class="hl-4">cognito</span><span class="hl-1">.</span><span class="hl-3">addUserToGroup</span><span class="hl-1">(</span><span class="hl-5">&quot;johndoe@example.com&quot;</span><span class="hl-1">, </span><span class="hl-5">&quot;Admin&quot;</span><span class="hl-1">);</span><br/><span class="hl-4">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-4">users</span><span class="hl-1">.</span><span class="hl-4">Users</span><span class="hl-1">);</span>
+</code><button>Copy</button></pre>
+
+<h4>See</h4><p><a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminAddUserToGroup.html">https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminAddUserToGroup.html</a></p>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L255">Cognito.ts:255</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="changePassword" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>change<wbr/>Password</span><a href="#changePassword" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -121,7 +152,7 @@
 <h4>See</h4><p><a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserPassword.html">https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminSetUserPassword.html</a></p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L162">Cognito.ts:162</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L165">Cognito.ts:165</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="deleteUser" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete<wbr/>User</span><a href="#deleteUser" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -146,7 +177,7 @@
 <h4>See</h4><p><a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminDeleteUser.html">https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminDeleteUser.html</a></p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L207">Cognito.ts:207</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L210">Cognito.ts:210</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="disableUser" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>disable<wbr/>User</span><a href="#disableUser" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -171,7 +202,7 @@
 <h4>See</h4><p><a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminDisableUser.html">https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminDisableUser.html</a></p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L186">Cognito.ts:186</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L189">Cognito.ts:189</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="inviteUser" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>invite<wbr/>User</span><a href="#inviteUser" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -187,7 +218,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type ">AdminCreateUserCommandOutput</span><span class="tsd-signature-symbol">&gt;</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L84">Cognito.ts:84</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L87">Cognito.ts:87</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="listUsers" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>list<wbr/>Users</span><a href="#listUsers" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -209,7 +240,7 @@
 <h4>See</h4><p><a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ListUsers.html">https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ListUsers.html</a></p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L231">Cognito.ts:231</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L234">Cognito.ts:234</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="randomPassword" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>random<wbr/>Password</span><a href="#randomPassword" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -229,7 +260,7 @@
 </code><button>Copy</button></pre>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/ee606e6/packages/cognito/src/Cognito.ts#L76">Cognito.ts:76</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/JuniYadi/nodejs/blob/e934804/packages/cognito/src/Cognito.ts#L79">Cognito.ts:79</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -254,6 +285,7 @@
 <li><a href="#cognitoIdentityProvider" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>cognito<wbr/>Identity<wbr/>Provider</span></a></li>
 <li><a href="#region" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>region</span></a></li>
 <li><a href="#userPoolId" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>user<wbr/>Pool<wbr/>Id</span></a></li>
+<li><a href="#addUserToGroup" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>add<wbr/>User<wbr/>To<wbr/>Group</span></a></li>
 <li><a href="#changePassword" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>change<wbr/>Password</span></a></li>
 <li><a href="#deleteUser" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>delete<wbr/>User</span></a></li>
 <li><a href="#disableUser" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>disable<wbr/>User</span></a></li>
