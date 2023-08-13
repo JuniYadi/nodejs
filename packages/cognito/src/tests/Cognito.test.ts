@@ -5,11 +5,67 @@ import {
   AdminDisableUserCommand,
   AdminSetUserPasswordCommand,
   CognitoIdentityProviderClient,
+  ListUsersCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
 
 jest.mock("@aws-sdk/client-cognito-identity-provider");
 
-describe("Cognito", () => {
+describe("CognitoWithEnv", () => {
+  let cognito: Cognito;
+
+  beforeEach(() => {
+    process.env.AWS_REGION = "us-west-2";
+    process.env.COGNITO_USER_POOL_ID = "us-west-2_123456789";
+    process.env.COGNITO_CLIENT_ID = "123456789";
+
+    cognito = new Cognito();
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+    delete process.env.AWS_REGION;
+    delete process.env.COGNITO_USER_POOL_ID;
+    delete process.env.COGNITO_CLIENT_ID;
+  });
+
+  describe("InitCognito", () => {
+    it("Cognito should be initialized with env variables", async () => {
+      expect(cognito).toBeDefined();
+      expect(cognito.userPoolId).toEqual("us-west-2_123456789");
+      expect(cognito.clientId).toEqual("123456789");
+    });
+  });
+});
+
+describe("CognitoNoEnv", () => {
+  let cognito: Cognito;
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  describe("InitCognito", () => {
+    it("Cognito should throw error if no env variables are set", async () => {
+      expect(() => {
+        cognito = new Cognito();
+      }).toThrowError("AWS Region is required");
+
+      expect(() => {
+        cognito = new Cognito({
+          region: "us-west-2",
+        });
+      }).toThrowError("Cognito User Pool ID is required");
+      expect(() => {
+        cognito = new Cognito({
+          region: "us-west-2",
+          userPoolId: "us-west-2_123456789",
+        });
+      }).toThrowError("Cognito Client ID is required");
+    });
+  });
+});
+
+describe("CognitoWithParams", () => {
   let cognito: Cognito;
   let cognitoIdentityProvider: CognitoIdentityProviderClient;
 
@@ -271,59 +327,25 @@ describe("Cognito", () => {
       );
     });
   });
-});
 
-describe("CognitoWithEnv", () => {
-  let cognito: Cognito;
+  describe("ListUsers", () => {
+    it("should call ListUsersCommand with correct params", async () => {
+      const mockResponse = {};
+      (cognitoIdentityProvider.send as jest.Mock).mockResolvedValue(
+        mockResponse
+      );
 
-  beforeEach(() => {
-    process.env.AWS_REGION = "us-west-2";
-    process.env.COGNITO_USER_POOL_ID = "us-west-2_123456789";
-    process.env.COGNITO_CLIENT_ID = "123456789";
+      const expectedParams = {
+        UserPoolId: cognito.userPoolId,
+      };
 
-    cognito = new Cognito();
-  });
+      await cognito.listUsers();
 
-  afterEach(() => {
-    jest.resetAllMocks();
-    delete process.env.AWS_REGION;
-    delete process.env.COGNITO_USER_POOL_ID;
-    delete process.env.COGNITO_CLIENT_ID;
-  });
+      expect(ListUsersCommand).toHaveBeenCalledWith(expectedParams);
 
-  describe("InitCognito", () => {
-    it("Cognito should be initialized with env variables", async () => {
-      expect(cognito).toBeDefined();
-      expect(cognito.userPoolId).toEqual("us-west-2_123456789");
-      expect(cognito.clientId).toEqual("123456789");
-    });
-  });
-});
-
-describe("CognitoNoEnv", () => {
-  let cognito: Cognito;
-
-  afterEach(() => {
-    jest.resetAllMocks();
-  });
-
-  describe("InitCognito", () => {
-    it("Cognito should throw error if no env variables are set", async () => {
-      expect(() => {
-        cognito = new Cognito();
-      }).toThrowError("AWS Region is required");
-
-      expect(() => {
-        cognito = new Cognito({
-          region: "us-west-2",
-        });
-      }).toThrowError("Cognito User Pool ID is required");
-      expect(() => {
-        cognito = new Cognito({
-          region: "us-west-2",
-          userPoolId: "us-west-2_123456789",
-        });
-      }).toThrowError("Cognito Client ID is required");
+      expect(cognitoIdentityProvider.send).toHaveBeenCalledWith(
+        expect.any(ListUsersCommand)
+      );
     });
   });
 });
