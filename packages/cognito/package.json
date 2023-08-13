@@ -2,8 +2,19 @@
   "name": "@juniyadi/cognito",
   "version": "0.2.0",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.mts"
+      },
+      "require": {
+        "default": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+      }
+    }
+  },
   "sideEffects": false,
   "license": "MIT",
   "files": [
@@ -26,18 +37,18 @@
   "devDependencies": {
     "@aws-sdk/client-cognito-identity": "^3.388.0",
     "@aws-sdk/client-cognito-identity-provider": "^3.388.0",
-    "@juniyadi/tsconfig": "workspace:*",
     "@juniyadi/config-typedoc": "workspace:*",
+    "@juniyadi/tsconfig": "workspace:*",
     "@types/jest": "^29.5.3",
-    "@types/node": "^20.4.9",
+    "@types/node": "^20.5.0",
     "aws-sdk-client-mock": "^3.0.0",
-    "eslint": "^8.46.0",
+    "eslint": "^8.47.0",
     "eslint-config-juniyadi": "workspace:*",
     "jest": "^29.6.2",
     "ts-jest": "^29.1.1",
-    "tsup": "^5.12.9",
+    "tsup": "^7.2.0",
     "typedoc": "^0.24.8",
-    "typescript": "^4.9.5"
+    "typescript": "^5.1.6"
   },
   "publishConfig": {
     "access": "public"
