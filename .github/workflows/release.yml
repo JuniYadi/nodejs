@@ -8,9 +8,6 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-env:
-  NODE_ENV: production
-
 jobs:
   release:
     name: Release
@@ -53,6 +50,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_ENV: production
 
       - name: Generate Documentation
         if: steps.changesets.outputs.published == 'true'
