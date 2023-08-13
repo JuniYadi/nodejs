@@ -1,5 +1,6 @@
 import { Cognito, ICognitoInviteUser } from "../Cognito";
 import {
+  AdminAddUserToGroupCommand,
   AdminCreateUserCommand,
   AdminDeleteUserCommand,
   AdminDisableUserCommand,
@@ -133,6 +134,36 @@ describe("CognitoWithParams", () => {
       );
     });
 
+    it("should call AdminCreateUserCommand with autoConfirm params", async () => {
+      const mockResponse = {
+        User: {
+          UserStatus: "FORCE_CHANGE_PASSWORD",
+        },
+      };
+      (cognitoIdentityProvider.send as jest.Mock).mockResolvedValue(
+        mockResponse
+      );
+
+      const mockUser: ICognitoInviteUser = {
+        name: "John Doe",
+        email: "johndoe@example.com",
+        password: "password",
+        autoConfirm: true,
+        sendEmail: false,
+      };
+
+      // mock changePassword
+      cognito.changePassword = jest.fn();
+
+      await cognito.inviteUser(mockUser);
+
+      // make sure changePassword is called
+      await expect(cognito.changePassword).toHaveBeenCalledWith(
+        mockUser.email,
+        mockUser.password
+      );
+    });
+
     it("should call AdminCreateUserCommand without sending email", async () => {
       const mockResponse = {};
       (cognitoIdentityProvider.send as jest.Mock).mockResolvedValue(
@@ -223,6 +254,112 @@ describe("CognitoWithParams", () => {
       await cognito.inviteUser(mockUser);
 
       expect(AdminCreateUserCommand).toHaveBeenCalledWith(expectedParams);
+      expect(cognitoIdentityProvider.send).toHaveBeenCalledWith(
+        expect.any(AdminCreateUserCommand)
+      );
+    });
+
+    it("should call AdminCreateUserCommand with Additional Attributes", async () => {
+      const mockResponse = {};
+      (cognitoIdentityProvider.send as jest.Mock).mockResolvedValue(
+        mockResponse
+      );
+
+      const mockUser: ICognitoInviteUser = {
+        name: "John Doe",
+        email: "johndoe@example.com",
+        password: "password",
+        autoConfirm: false,
+        sendEmail: false,
+        attributes: [
+          {
+            Name: "Family Name",
+            Value: "Doe",
+          },
+        ],
+      };
+
+      const expectedParams = {
+        UserPoolId: cognito.userPoolId,
+        Username: mockUser.email,
+        UserAttributes: [
+          {
+            Name: "email",
+            Value: mockUser.email,
+          },
+          {
+            Name: "name",
+            Value: mockUser.name,
+          },
+          {
+            Name: "email_verified",
+            Value: "true",
+          },
+          {
+            Name: "Family Name",
+            Value: "Doe",
+          },
+        ],
+        DesiredDeliveryMediums: ["EMAIL"],
+        ForceAliasCreation: false,
+        MessageAction: "SUPPRESS",
+        TemporaryPassword: expect.any(String),
+      };
+
+      await cognito.inviteUser(mockUser);
+
+      expect(AdminCreateUserCommand).toHaveBeenCalledWith(expectedParams);
+      expect(cognitoIdentityProvider.send).toHaveBeenCalledWith(
+        expect.any(AdminCreateUserCommand)
+      );
+    });
+
+    it("should call AdminCreateUserCommand with Group params", async () => {
+      const mockResponse = {};
+      (cognitoIdentityProvider.send as jest.Mock).mockResolvedValue(
+        mockResponse
+      );
+
+      const mockUser: ICognitoInviteUser = {
+        name: "John Doe",
+        email: "johndoe@example.com",
+        password: "password",
+        autoConfirm: true,
+        sendEmail: false,
+        group: "Admin",
+      };
+
+      // mock changePassword
+      cognito.addUserToGroup = jest.fn();
+
+      await cognito.inviteUser(mockUser);
+
+      // make sure changePassword is called
+      await expect(cognito.addUserToGroup).toHaveBeenCalledWith(
+        mockUser.email,
+        mockUser.group
+      );
+    });
+
+    it("should throw an error if the user already exists", async () => {
+      (cognitoIdentityProvider.send as jest.Mock).mockRejectedValue(
+        new Error("User already exists")
+      );
+
+      const mockUser: ICognitoInviteUser = {
+        name: "John Doe",
+        email: "johndoe@example.com",
+        password: "password",
+        autoConfirm: true,
+        sendEmail: false,
+      };
+
+      await expect(cognito.inviteUser(mockUser)).rejects.toThrow(
+        "User already exists"
+      );
+
+      expect(AdminCreateUserCommand).toHaveBeenCalledWith(expect.anything());
+
       expect(cognitoIdentityProvider.send).toHaveBeenCalledWith(
         expect.any(AdminCreateUserCommand)
       );
@@ -345,6 +482,34 @@ describe("CognitoWithParams", () => {
 
       expect(cognitoIdentityProvider.send).toHaveBeenCalledWith(
         expect.any(ListUsersCommand)
+      );
+    });
+  });
+
+  describe("AddUserToGroup", () => {
+    it("should call AdminAddUserToGroupCommand with correct params", async () => {
+      const mockResponse = {};
+      (cognitoIdentityProvider.send as jest.Mock).mockResolvedValue(
+        mockResponse
+      );
+
+      const mockUser = {
+        email: "johndoe@example.com",
+        group: "Admin",
+      };
+
+      const expectedParams = {
+        UserPoolId: cognito.userPoolId,
+        Username: mockUser.email,
+        GroupName: mockUser.group,
+      };
+
+      await cognito.addUserToGroup(mockUser.email, mockUser.group);
+
+      expect(AdminAddUserToGroupCommand).toHaveBeenCalledWith(expectedParams);
+
+      expect(cognitoIdentityProvider.send).toHaveBeenCalledWith(
+        expect.any(AdminAddUserToGroupCommand)
       );
     });
   });

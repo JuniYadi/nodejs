@@ -9,6 +9,8 @@ import {
   AdminDeleteUserCommand,
   AdminDeleteUserCommandOutput,
   ListUsersCommand,
+  AdminAddUserToGroupCommandOutput,
+  AdminAddUserToGroupCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { randomBytes } from "crypto";
 
@@ -32,6 +34,7 @@ export interface ICognitoInviteUser {
   phoneNumber?: string;
   sendEmail?: boolean;
   attributes?: ICognitoAttributes[];
+  group?: string;
 }
 
 export class Cognito {
@@ -132,14 +135,14 @@ export class Cognito {
         opts.autoConfirm &&
         response?.User?.UserStatus === "FORCE_CHANGE_PASSWORD"
       ) {
-        const changePassword = await this.changePassword(
-          opts.email,
-          opts.password
-        );
+        await this.changePassword(opts.email, opts.password);
+      }
 
-        if (changePassword?.$metadata?.httpStatusCode !== 200) {
-          throw new Error("Error changing password");
-        }
+      /**
+       * Add the user to the group if provided
+       */
+      if (opts.group) {
+        await this.addUserToGroup(opts.email, opts.group);
       }
 
       return response;
@@ -232,6 +235,31 @@ export class Cognito {
     const command = new ListUsersCommand({
       UserPoolId: this.userPoolId,
       Filter: filter || undefined,
+    });
+
+    return this.cognitoIdentityProvider.send(command);
+  };
+
+  /**
+   * Add a user to a group in Cognito User Pool
+   * @param username - Username of the user
+   * @param groupName - Name of the group
+   * @returns Promise<AdminAddUserToGroupCommandOutput>
+   * @example
+   * const cognito = new Cognito();
+   * const users = await cognito.addUserToGroup("johndoe@example.com", "Admin");
+   * console.log(users.Users);
+   *
+   * @see https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminAddUserToGroup.html
+   */
+  public addUserToGroup = async (
+    username: string,
+    groupName: string
+  ): Promise<AdminAddUserToGroupCommandOutput> => {
+    const command = new AdminAddUserToGroupCommand({
+      UserPoolId: this.userPoolId,
+      Username: username,
+      GroupName: groupName,
     });
 
     return this.cognitoIdentityProvider.send(command);
