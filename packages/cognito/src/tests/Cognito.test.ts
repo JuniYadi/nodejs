@@ -1,4 +1,4 @@
-import { Cognito, ICognitoInviteUser } from "../Cognito";
+import { Cognito, ICognitoInviteUser } from "../index";
 import {
   AdminAddUserToGroupCommand,
   AdminCreateUserCommand,
