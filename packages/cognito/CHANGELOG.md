@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 0.4.0
+
+### Minor Changes
+
+- e5fc0c3: Cognito - Enable User
+
 ## 0.3.0
 
 ### Minor Changes
