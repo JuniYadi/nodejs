@@ -93,7 +93,45 @@ describe("Cloudfront", () => {
         dateLessThan: expect.stringContaining(expectedExpired),
         privateKey,
       });
-      expect(result).toEqual({ urlUpload: expectedUrlUpload, url, filename });
+      expect(result).toEqual({
+        urlUpload: expectedUrlUpload,
+        url,
+        filename,
+        path: filename,
+      });
+    });
+
+    it("should extract the filename correctly if it contains a path", () => {
+      const cloudfront = new Cloudfront({
+        cloudFrontPrivateKey: privateKey,
+        cloudFrontPublicKeyId: publicKeyId,
+        cloudFrontDomain: domain,
+      });
+      const url = `${domain}/path/${filename}`;
+      // expected same date and time but with milliseconds removed
+      const expectedExpired = dayjs()
+        .add(15, "minute")
+        .toISOString()
+        .split(".")[0];
+      const signedUrl = "signedUrl";
+      const expectedUrl = {
+        urlUpload: signedUrl,
+        url,
+        filename,
+        path: "path/test.jpg",
+      };
+
+      (getSignedUrl as jest.Mock).mockReturnValue(signedUrl);
+
+      const result = cloudfront.generateUrl("path/test.jpg");
+
+      expect(getSignedUrl).toHaveBeenCalledWith({
+        url,
+        keyPairId: publicKeyId,
+        dateLessThan: expect.stringContaining(expectedExpired),
+        privateKey,
+      });
+      expect(result).toEqual(expectedUrl);
     });
 
     it("should call getSignedUrl with custom expiration time", () => {
@@ -119,12 +157,17 @@ describe("Cloudfront", () => {
         dateLessThan: expect.stringContaining(expectedExpired),
         privateKey,
       });
-      expect(result).toEqual({ urlUpload: expectedUrlUpload, url, filename });
+      expect(result).toEqual({
+        urlUpload: expectedUrlUpload,
+        url,
+        filename,
+        path: filename,
+      });
     });
   });
 
   describe("generateUserUploadUrl", () => {
-    it("should call generateUrl with correct parameters", () => {
+    it("should call generateUrl with the correct parameters and return the expected result", () => {
       const cloudfront = new Cloudfront({
         cloudFrontPrivateKey: privateKey,
         cloudFrontPublicKeyId: publicKeyId,
@@ -132,23 +175,66 @@ describe("Cloudfront", () => {
       });
       const date = dayjs();
       const year = date.year();
-      const month = date.month() + 1;
-      const timestamp = date.unix();
-      const newFilename = `${timestamp}-${filename}`;
-      const url = `${userId}/${year}/${month}/${newFilename}`;
-      const expectedUrlUpload = "signedUrl";
+      const month = date.format("MM");
+      const url = `${userId}/${year}/${month}/test.jpg`;
+      // expected same date and time but with milliseconds removed
+      const expectedExpired = dayjs()
+        .add(15, "minute")
+        .toISOString()
+        .split(".")[0];
+      const signedUrl = "signedUrl";
 
-      const generateUrlSpy = jest.spyOn(cloudfront, "generateUrl");
-      generateUrlSpy.mockReturnValueOnce({
-        urlUpload: expectedUrlUpload,
-        url,
-        filename,
-      });
+      (getSignedUrl as jest.Mock).mockReturnValue(signedUrl);
 
       const result = cloudfront.generateUserUploadUrl(filename, userId);
 
-      expect(cloudfront.generateUrl).toHaveBeenCalledWith(url, undefined);
-      expect(result).toEqual({ urlUpload: expectedUrlUpload, url, filename });
+      expect(getSignedUrl).toHaveBeenCalledWith({
+        url: expect.stringContaining("test.jpg"),
+        keyPairId: publicKeyId,
+        dateLessThan: expect.stringContaining(expectedExpired),
+        privateKey,
+      });
+      expect(result).toEqual({
+        urlUpload: signedUrl,
+        url: expect.stringContaining("test.jpg"),
+        filename: expect.stringContaining("test.jpg"),
+        path: expect.stringContaining("test.jpg"),
+      });
+    });
+
+    it("should call generateUrl with the correct parameters and return the expected result when exp is provided", () => {
+      const cloudfront = new Cloudfront({
+        cloudFrontPrivateKey: privateKey,
+        cloudFrontPublicKeyId: publicKeyId,
+        cloudFrontDomain: domain,
+      });
+      const date = dayjs();
+      const year = date.year();
+      const month = date.format("MM");
+      const url = `${userId}/${year}/${month}/test.jpg`;
+      // expected same date and time but with milliseconds removed
+      const expectedExpired = dayjs()
+        .add(exp, "minute")
+        .toISOString()
+        .split(".")[0];
+      const signedUrl = "signedUrl";
+
+      (getSignedUrl as jest.Mock).mockReturnValue(signedUrl);
+
+      const result = cloudfront.generateUserUploadUrl(filename, userId, exp);
+
+      expect(getSignedUrl).toHaveBeenCalledWith({
+        url: expect.stringContaining("test.jpg"),
+        keyPairId: publicKeyId,
+        dateLessThan: expect.stringContaining(expectedExpired),
+        privateKey,
+      });
+      expect(result).toEqual({
+        urlUpload: signedUrl,
+        url: expect.stringContaining("test.jpg"),
+        filename: expect.stringContaining("test.jpg"),
+        path: expect.stringContaining("test.jpg"),
+      });
     });
   });
 });
