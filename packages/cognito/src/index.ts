@@ -6,13 +6,13 @@ import {
   AdminDeleteUserCommand,
   ListUsersCommand,
   AdminAddUserToGroupCommand,
-} from "@aws-sdk/client-cognito-identity-provider";
-import type {
+  AdminEnableUserCommand,
   AdminCreateUserCommandInput,
   AdminSetUserPasswordCommandOutput,
   AdminDisableUserCommandOutput,
   AdminDeleteUserCommandOutput,
   AdminAddUserToGroupCommandOutput,
+  AdminEnableUserCommandOutput,
 } from "@aws-sdk/client-cognito-identity-provider";
 import { randomBytes } from "crypto";
 
@@ -192,6 +192,28 @@ export class Cognito {
     username: string
   ): Promise<AdminDisableUserCommandOutput> => {
     const command = new AdminDisableUserCommand({
+      UserPoolId: this.userPoolId,
+      Username: username,
+    });
+
+    return this.cognitoIdentityProvider.send(command);
+  };
+
+  /**
+   * Enable a user in Cognito User Pool
+   * @param username - Username of the user
+   * @returns Promise<AdminEnableUserCommandOutput>
+   * @example
+   * const cognito = new Cognito();
+   * const users = await cognito.enableUser("johndoe@example.com");
+   * console.log(users.Users);
+   *
+   * @see https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminEnableUser.html
+   */
+  public enableUser = async (
+    username: string
+  ): Promise<AdminEnableUserCommandOutput> => {
+    const command = new AdminEnableUserCommand({
       UserPoolId: this.userPoolId,
       Username: username,
     });
