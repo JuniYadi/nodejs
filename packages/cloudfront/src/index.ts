@@ -38,6 +38,9 @@ export class Cloudfront {
    */
   public generateUrl = (filename: string, exp?: number) => {
     const url = `${this.cloudFrontDomain}/${filename}`;
+
+    let newFilename;
+    let newPathfile;
     let expired = dayjs().add(15, "minute").toISOString();
 
     if (exp) {
@@ -51,7 +54,17 @@ export class Cloudfront {
       privateKey: this.cloudFrontPrivateKey,
     });
 
-    return { urlUpload, url, filename };
+    if (filename.includes("/")) {
+      const split = filename.split("/");
+      newFilename = split[split.length - 1];
+    }
+
+    return {
+      urlUpload,
+      url,
+      filename: newFilename || filename,
+      path: newPathfile || filename,
+    };
   };
 
   /**
@@ -75,7 +88,7 @@ export class Cloudfront {
   ) => {
     const date = dayjs();
     const year = date.year();
-    const month = date.month() + 1;
+    const month = date.format("MM");
     const timestamp = date.unix();
 
     const newFilename = `${timestamp}-${filename}`;

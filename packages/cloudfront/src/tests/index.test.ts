@@ -93,7 +93,12 @@ describe("Cloudfront", () => {
         dateLessThan: expect.stringContaining(expectedExpired),
         privateKey,
       });
-      expect(result).toEqual({ urlUpload: expectedUrlUpload, url, filename });
+      expect(result).toEqual({
+        urlUpload: expectedUrlUpload,
+        url,
+        filename,
+        path: filename,
+      });
     });
 
     it("should call getSignedUrl with custom expiration time", () => {
@@ -119,7 +124,12 @@ describe("Cloudfront", () => {
         dateLessThan: expect.stringContaining(expectedExpired),
         privateKey,
       });
-      expect(result).toEqual({ urlUpload: expectedUrlUpload, url, filename });
+      expect(result).toEqual({
+        urlUpload: expectedUrlUpload,
+        url,
+        filename,
+        path: filename,
+      });
     });
   });
 
@@ -132,7 +142,7 @@ describe("Cloudfront", () => {
       });
       const date = dayjs();
       const year = date.year();
-      const month = date.month() + 1;
+      const month = date.format("MM");
       const timestamp = date.unix();
       const newFilename = `${timestamp}-${filename}`;
       const url = `${userId}/${year}/${month}/${newFilename}`;
@@ -142,13 +152,19 @@ describe("Cloudfront", () => {
       generateUrlSpy.mockReturnValueOnce({
         urlUpload: expectedUrlUpload,
         url,
-        filename,
+        filename: newFilename,
+        path: url,
       });
 
       const result = cloudfront.generateUserUploadUrl(filename, userId);
 
       expect(cloudfront.generateUrl).toHaveBeenCalledWith(url, undefined);
-      expect(result).toEqual({ urlUpload: expectedUrlUpload, url, filename });
+      expect(result).toEqual({
+        urlUpload: expectedUrlUpload,
+        url,
+        filename: newFilename,
+        path: url,
+      });
     });
   });
 });
