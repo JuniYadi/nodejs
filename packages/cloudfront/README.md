@@ -1,6 +1,6 @@
-# Cognito
+# Cloudfront
 
-![npm](https://img.shields.io/npm/dm/@juniyadi/cognito)
-![npm](https://img.shields.io/npm/v/@juniyadi/cognito)
-![NPM](https://img.shields.io/npm/l/@juniyadi/cognito)
-![npm bundle size](https://img.shields.io/bundlephobia/min/@juniyadi/cognito)
+![npm](https://img.shields.io/npm/dm/@juniyadi/cloudfront)
+![npm](https://img.shields.io/npm/v/@juniyadi/cloudfront)
+![NPM](https://img.shields.io/npm/l/@juniyadi/cloudfront)
+![npm bundle size](https://img.shields.io/bundlephobia/min/@juniyadi/cloudfront)
