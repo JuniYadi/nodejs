@@ -37,12 +37,10 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@aws-sdk/cloudfront-signer": "^3.391.0",
     "@juniyadi/config-typedoc": "workspace:*",
     "@juniyadi/tsconfig": "workspace:*",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.5.0",
-    "aws-sdk-client-mock": "^3.0.0",
     "dayjs": "^1.11.9",
     "eslint": "^8.47.0",
     "eslint-config-juniyadi": "workspace:*",
