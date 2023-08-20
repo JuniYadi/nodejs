@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 0.5.0
+
+### Minor Changes
+
+- 9e54e07: Update Cognito - Generate Random Password
+
 ## 0.4.0
 
 ### Minor Changes
