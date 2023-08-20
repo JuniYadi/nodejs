@@ -14,7 +14,7 @@ import {
   AdminAddUserToGroupCommandOutput,
   AdminEnableUserCommandOutput,
 } from "@aws-sdk/client-cognito-identity-provider";
-import { randomBytes } from "crypto";
+import { generate } from "@juniyadi/random-string";
 
 export interface ICognito {
   region?: string;
@@ -30,7 +30,7 @@ export interface ICognitoAttributes {
 export interface ICognitoInviteUser {
   name: string;
   email: string;
-  password: string;
+  password?: string;
   passwordTemporary?: string;
   autoConfirm?: boolean;
   phoneNumber?: string;
@@ -79,7 +79,11 @@ export class Cognito {
    * console.log(password);
    */
   public randomPassword = (length = 12): string => {
-    return randomBytes(256).toString("hex").slice(0, length);
+    return generate(length, {
+      lowercase: true,
+      uppercase: true,
+      numbers: true,
+    });
   };
 
   /**
@@ -87,7 +91,8 @@ export class Cognito {
    * @param opts
    */
   public inviteUser = async (opts: ICognitoInviteUser) => {
-    const temporaryPassword = opts.passwordTemporary || this.randomPassword();
+    const password = opts.password || this.randomPassword(10);
+    const temporaryPassword = opts.passwordTemporary || this.randomPassword(12);
 
     const items: AdminCreateUserCommandInput = {
       UserPoolId: this.userPoolId,
@@ -137,7 +142,7 @@ export class Cognito {
         opts.autoConfirm &&
         response?.User?.UserStatus === "FORCE_CHANGE_PASSWORD"
       ) {
-        await this.changePassword(opts.email, opts.password);
+        await this.changePassword(opts.email, password);
       }
 
       /**

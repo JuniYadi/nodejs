@@ -53,8 +53,12 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "@juniyadi/random-string": "workspace:*"
+  },
   "peerDependencies": {
     "@aws-sdk/client-cognito-identity": "^3.388.0",
-    "@aws-sdk/client-cognito-identity-provider": "^3.388.0"
+    "@aws-sdk/client-cognito-identity-provider": "^3.388.0",
+    "@juniyadi/random-string": "workspace:*"
   }
 }
