@@ -1,0 +1,55 @@
+{
+  "name": "@juniyadi/random-string",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.mts"
+      },
+      "require": {
+        "default": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+      }
+    }
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
+  "homepage": "https://github.com/JuniYadi/nodejs/tree/main/packages/random-string",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JuniYadi/nodejs",
+    "directory": "packages/random-string"
+  },
+  "scripts": {
+    "docs": "typedoc --out docs src/index.ts",
+    "build": "cross-env NODE_ENV=production tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@juniyadi/config-typedoc": "workspace:*",
+    "@juniyadi/tsconfig": "workspace:*",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.5.0",
+    "eslint": "^8.47.0",
+    "eslint-config-juniyadi": "workspace:*",
+    "jest": "^29.6.2",
+    "ts-jest": "^29.1.1",
+    "tsup": "^7.2.0",
+    "typedoc": "^0.24.8",
+    "typescript": "^5.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
