@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 0.5.1
+
+### Patch Changes
+
+- 3fb3d84: Update Cognito Dependency
+
 ## 0.5.0
 
 ### Minor Changes
