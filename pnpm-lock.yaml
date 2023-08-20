@@ -79,10 +79,6 @@ importers:
         version: 5.1.6
 
   packages/cognito:
-    dependencies:
-      '@juniyadi/random-string':
-        specifier: workspace:*
-        version: link:../random-string
     devDependencies:
       '@aws-sdk/client-cognito-identity':
         specifier: ^3.388.0
@@ -93,6 +89,9 @@ importers:
       '@juniyadi/config-typedoc':
         specifier: workspace:*
         version: link:../config-typedoc
+      '@juniyadi/random-string':
+        specifier: workspace:*
+        version: link:../random-string
       '@juniyadi/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
