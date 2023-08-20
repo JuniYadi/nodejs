@@ -4,6 +4,7 @@ import {
   AdminCreateUserCommand,
   AdminDeleteUserCommand,
   AdminDisableUserCommand,
+  AdminEnableUserCommand,
   AdminSetUserPasswordCommand,
   CognitoIdentityProviderClient,
   ListUsersCommand,
@@ -429,6 +430,32 @@ describe("CognitoWithParams", () => {
 
       expect(cognitoIdentityProvider.send).toHaveBeenCalledWith(
         expect.any(AdminDisableUserCommand)
+      );
+    });
+  });
+
+  describe("EnableUser", () => {
+    it("should call AdminEnableUserCommand with correct params", async () => {
+      const mockResponse = {};
+      (cognitoIdentityProvider.send as jest.Mock).mockResolvedValue(
+        mockResponse
+      );
+
+      const mockUser = {
+        email: "johndoe@example.com",
+      };
+
+      const expectedParams = {
+        UserPoolId: cognito.userPoolId,
+        Username: mockUser.email,
+      };
+
+      await cognito.enableUser(mockUser.email);
+
+      expect(AdminEnableUserCommand).toHaveBeenCalledWith(expectedParams);
+
+      expect(cognitoIdentityProvider.send).toHaveBeenCalledWith(
+        expect.any(AdminEnableUserCommand)
       );
     });
   });
