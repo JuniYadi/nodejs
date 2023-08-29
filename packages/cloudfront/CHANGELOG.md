@@ -1,5 +1,11 @@
 # @juniyadi/cloudfront
 
+## 0.2.1
+
+### Patch Changes
+
+- f53743e: Update Cloudfront - Domain Property is Public
+
 ## 0.2.0
 
 ### Minor Changes
