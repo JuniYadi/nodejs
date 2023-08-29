@@ -10,7 +10,7 @@ export interface ICloudfront {
 export class Cloudfront {
   private cloudFrontPrivateKey: string;
   private cloudFrontPublicKeyId: string;
-  private cloudFrontDomain: string;
+  public cloudFrontDomain: string;
 
   constructor(opts?: ICloudfront) {
     this.cloudFrontPrivateKey =
