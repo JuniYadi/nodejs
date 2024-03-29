@@ -1,5 +1,12 @@
 # @juniyadi/dynamodb
 
+## 0.1.3
+
+### Patch Changes
+
+- c49d5de: Added Entity
+  Added Create Function For Entity
+
 ## 0.1.2
 
 ### Patch Changes
