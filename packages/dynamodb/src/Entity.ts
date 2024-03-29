@@ -1,4 +1,3 @@
-
 import { DBOptions, ModelOptions } from "./types/Entity";
 
 export class Entity {
@@ -8,5 +7,9 @@ export class Entity {
   constructor(model: ModelOptions, config: DBOptions) {
     this.model = model;
     this.config = config;
+  }
+
+  public async create(input: any) {
+    return input;
   }
 }
