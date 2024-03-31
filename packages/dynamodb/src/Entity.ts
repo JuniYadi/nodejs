@@ -1,15 +1,23 @@
-import { DBOptions, ModelOptions } from "./types/Entity";
+import type {
+  InputModelType,
+  DBOptions,
+  Indexs,
+  ModelOptions,
+  Models,
+} from "./types/Entity";
 
-export class Entity {
-  model: ModelOptions;
+export class Entity<M extends Models, I extends Indexs> {
+  model: M;
+  index: I;
   config: DBOptions;
 
-  constructor(model: ModelOptions, config: DBOptions) {
-    this.model = model;
+  constructor(schema: ModelOptions, config: DBOptions) {
+    this.model = schema.model as M;
+    this.index = schema.indexs as I;
     this.config = config;
   }
 
-  public async create(input: any) {
+  public async create(input: InputModelType<M>): Promise<InputModelType<M>> {
     return input;
   }
 }
