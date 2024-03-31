@@ -22,6 +22,37 @@ export interface ModelAttributes {
   required: boolean;
 }
 
+export type InferModelType<T> = T extends "string"
+  ? string
+  : T extends "number"
+  ? number
+  : T extends "boolean"
+  ? boolean
+  : T extends "array"
+  ? any[]
+  : T extends "object"
+  ? Record<string, any>
+  : T extends "date"
+  ? Date
+  : T extends "timestamp"
+  ? number
+  : T;
+
+export type ModelRequiredProps<T extends Models> = {
+  [P in keyof T as T[P]["required"] extends true ? P : never]: InferModelType<
+    T[P]["type"]
+  >;
+};
+
+export type ModelOptionalProps<T extends Models> = {
+  [P in keyof T as T[P]["required"] extends false ? P : never]?: InferModelType<
+    T[P]["type"]
+  >;
+};
+
+export type InputModelType<T extends Models> = ModelRequiredProps<T> &
+  ModelOptionalProps<T>;
+
 export interface Indexs {
   [key: string]: ModelIndexOptions;
 }
