@@ -1,5 +1,11 @@
 # @juniyadi/dynamodb
 
+## 0.1.4
+
+### Patch Changes
+
+- ee042c7: Update Entity Types
+
 ## 0.1.3
 
 ### Patch Changes
