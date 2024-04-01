@@ -1,5 +1,11 @@
 # @juniyadi/serverless
 
+## 0.1.2
+
+### Patch Changes
+
+- 62020af: Fixed Export Index
+
 ## 0.1.1
 
 ### Patch Changes

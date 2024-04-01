@@ -1,5 +1,11 @@
 # @juniyadi/dynamodb
 
+## 0.2.1
+
+### Patch Changes
+
+- 62020af: Fixed Export Index
+
 ## 0.2.0
 
 ### Minor Changes
