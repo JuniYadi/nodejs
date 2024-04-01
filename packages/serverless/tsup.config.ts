@@ -4,7 +4,7 @@ import type { Options } from "tsup";
 const env = process.env.NODE_ENV || "development";
 
 export default defineConfig({
-  entry: ["src/**/*.ts", "!src/types/", "!src/tests/", "!src/**/*.test.ts"],
+  entry: ["src/**/*.ts", "!src/tests/", "!src/**/*.test.ts"],
   format: ["cjs", "esm"],
   splitting: false,
   sourcemap: false,
