@@ -14,7 +14,7 @@ const coldStartMiddleware = () => {
   return { after };
 };
 
-export const customMiddy = (middleware: any[]) => {
+export const customMiddy = (middleware?: any[]) => {
   const allMiddleware = [coldStartMiddleware(), httpSecurityHeaders(), cors()];
 
   // inject middleware to allMiddleware
