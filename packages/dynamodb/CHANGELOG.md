@@ -1,5 +1,11 @@
 # @juniyadi/dynamodb
 
+## 0.2.0
+
+### Minor Changes
+
+- 4853de2: Fixed Builder Types
+
 ## 0.1.4
 
 ### Patch Changes
