@@ -16,13 +16,13 @@ dayjs.extend(timezone);
 const p = pino();
 const date = () => dayjs().tz("Asia/Jakarta").format("YYYY-MM-DDTHH:mm:ssZ");
 
-interface ILogger {
+export interface ILogger {
   event?: Partial<APIGatewayProxyEvent>;
   response?: Partial<APIGatewayProxyResult>;
   context?: Partial<Context>;
 }
 
-interface ILoggerMiddleware extends ILogger {
+export interface ILoggerMiddleware extends ILogger {
   coldStart?: boolean;
 }
 
