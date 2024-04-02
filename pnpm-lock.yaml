@@ -222,17 +222,17 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       '@middy/core':
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^4
+        version: 4.7.0
       '@middy/http-cors':
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^4
+        version: 4.7.0
       '@middy/http-security-headers':
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^4
+        version: 4.7.0
       '@middy/input-output-logger':
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^4
+        version: 4.7.0
       '@types/aws-lambda':
         specifier: ^8.10.136
         version: 8.10.136
@@ -1355,13 +1355,6 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@datastream/core@0.0.35:
-    resolution: {integrity: sha512-jmKFcDTYqtDy8DHPahaheg3MlLBiQboYX4jYX8oxE1tO5x7cfLl5M6bqR/o46RCEFZ3M9yMVfEEh0hy5raErEw==}
-    engines: {node: '>=18'}
-    dependencies:
-      cloneable-readable: 3.0.0
-    dev: true
-
   /@esbuild/android-arm64@0.18.20:
     resolution: {integrity: sha512-Nz4rJcchGDtENV0eMKUNa6L12zz2zBDXuhj/Vjh18zGqB44Bi7MBMSXjgunJgjRhCmKOjnPuZp4Mb6OKqtMHLQ==}
     engines: {node: '>=12'}
@@ -1909,35 +1902,35 @@ packages:
       read-yaml-file: 1.1.0
     dev: true
 
-  /@middy/core@5.3.2:
-    resolution: {integrity: sha512-g1PonDsJI/t6DldRD/MijnE9kQBWYDZRfGkqJv/Dy+TXyTJmsmk6k/znx+RgqZYlpz1QodWi+6gzRsjPuvM8ew==}
-    engines: {node: '>=18'}
+  /@middy/core@4.7.0:
+    resolution: {integrity: sha512-yI++DmhDQ8+ugvY7+GrEnb2PF0M/6Wzbgu4Tf7QhOlhwKGDd4j6or+Ab7qYPWx+jnKf8F0tqlmh0gV4JLi0yHw==}
+    engines: {node: '>=16'}
+    dev: true
+
+  /@middy/http-cors@4.7.0:
+    resolution: {integrity: sha512-sQ/N+8TNBEzu84Cqkd1UF0+lzMze8K/2/wh6yHz173dVCD8UU0SV4oiE7QSfQzyKzQDT0A0O7FFetswdBeUGOg==}
+    engines: {node: '>=16'}
     dependencies:
-      '@datastream/core': 0.0.35
+      '@middy/util': 4.7.0
     dev: true
 
-  /@middy/http-cors@5.3.2:
-    resolution: {integrity: sha512-nayDniMRaBDPKrEnYs3JPiYCv8UYJCHSSfyD8y7dUzm4PjvCrk13+sdFKKP7rv+ie6pXa+iHJN9js16t2bnW/w==}
-    engines: {node: '>=18'}
+  /@middy/http-security-headers@4.7.0:
+    resolution: {integrity: sha512-0pyOfPnE4Brt2bqobC/HG9lInqhH9hvYLz15+CjDu6QUwwRBiAsYVDIdR6mbjQaLabH6qojQWbujGhbIac63ew==}
+    engines: {node: '>=16'}
     dependencies:
-      '@middy/util': 5.3.2
+      '@middy/util': 4.7.0
     dev: true
 
-  /@middy/http-security-headers@5.3.2:
-    resolution: {integrity: sha512-qElf/2ev5x2KK7Gy0Ut7xkBU1c2hV69YyHi1YYU3HnFD2eMu+UaymH/m66ojM1UvKFgN73ndvj1wdEmV3Ixn/A==}
-    engines: {node: '>=18'}
+  /@middy/input-output-logger@4.7.0:
+    resolution: {integrity: sha512-zu7Lny3QNosmiR1MKo5a9Rp+tWWGO+kblROeZ/ZxGPGwz5NMOWSQgr9f3m8qedmPCYeoFjnHfT310yQNOR29qA==}
+    engines: {node: '>=16'}
     dependencies:
-      '@middy/util': 5.3.2
+      '@middy/util': 4.7.0
     dev: true
 
-  /@middy/input-output-logger@5.3.2:
-    resolution: {integrity: sha512-361vbp8JUmvpAtFKWUPt/KzTOXK5/TdIS8ShgZ12lCeI8CVLpxR+WvkrFbDb8SSaSt8CWnvMlqJHmdH6l4Yl3w==}
-    engines: {node: '>=18'}
-    dev: true
-
-  /@middy/util@5.3.2:
-    resolution: {integrity: sha512-/Y5xxPwkQAigphYmJhThN6TGQCCFgybOYYK7SfiEr8cY7IhYnTys2uyTJR7ziS5jP82zNlgE9H5ZEj6IswHOKQ==}
-    engines: {node: '>=18'}
+  /@middy/util@4.7.0:
+    resolution: {integrity: sha512-HUh0EOLGzBQjmJks4N12mmEebshtCUwyzdhk59UmAj97zzM0qn0exQvZDfbkY0pb/6b7sNnf7IpFww8Z6YxpWw==}
+    engines: {node: '>=16'}
     dev: true
 
   /@next/env@13.4.13:
@@ -3130,12 +3123,6 @@ packages:
   /clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
-    dev: true
-
-  /cloneable-readable@3.0.0:
-    resolution: {integrity: sha512-Lkfd9IRx1nfiBr7UHNxJSl/x7DOeUfYmxzCkxYJC2tyc/9vKgV75msgLGurGQsak/NvJDHMWcshzEXRlxfvhqg==}
-    dependencies:
-      readable-stream: 4.5.2
     dev: true
 
   /co@4.6.0:

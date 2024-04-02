@@ -31,10 +31,10 @@
   },
   "devDependencies": {
     "@juniyadi/tsconfig": "workspace:*",
-    "@middy/core": "^5.3.2",
-    "@middy/http-cors": "^5.3.2",
-    "@middy/http-security-headers": "^5.3.2",
-    "@middy/input-output-logger": "^5.3.2",
+    "@middy/core": "^4",
+    "@middy/http-cors": "^4",
+    "@middy/http-security-headers": "^4",
+    "@middy/input-output-logger": "^4",
     "@types/aws-lambda": "^8.10.136",
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.9",
@@ -51,10 +51,10 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@middy/core": "^5.3.2",
-    "@middy/http-cors": "^5.3.2",
-    "@middy/http-security-headers": "^5.3.2",
-    "@middy/input-output-logger": "^5.3.2",
+    "@middy/core": "^4",
+    "@middy/http-cors": "^4",
+    "@middy/http-security-headers": "^4",
+    "@middy/input-output-logger": "^4",
     "@types/aws-lambda": "^8.10.136",
     "dayjs": "^1.11.9",
     "pino": "^8.19.0"
