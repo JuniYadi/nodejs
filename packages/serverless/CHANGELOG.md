@@ -1,5 +1,11 @@
 # @juniyadi/serverless
 
+## 0.2.1
+
+### Patch Changes
+
+- 63a727d: Update Appname Middleware and Log
+
 ## 0.2.0
 
 ### Minor Changes
