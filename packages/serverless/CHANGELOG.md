@@ -1,5 +1,11 @@
 # @juniyadi/serverless
 
+## 0.2.0
+
+### Minor Changes
+
+- 7d1fa82: Downgrade to Middy 4
+
 ## 0.1.2
 
 ### Patch Changes
