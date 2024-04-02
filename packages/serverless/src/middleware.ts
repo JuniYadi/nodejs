@@ -14,7 +14,7 @@ const coldStartMiddleware = () => {
   return { after };
 };
 
-export const customMiddy = (middleware?: any[]) => {
+export const customMiddy = (appName?: string, middleware?: any[]) => {
   const allMiddleware = [coldStartMiddleware(), httpSecurityHeaders(), cors()];
 
   // inject middleware to allMiddleware
@@ -28,6 +28,7 @@ export const customMiddy = (middleware?: any[]) => {
     inputOutputLogger({
       logger: (request) =>
         logMiddleware({
+          appName: appName || "function",
           event: request?.event,
           context: request?.context,
           coldStart,
