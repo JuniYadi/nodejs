@@ -17,6 +17,7 @@ const p = pino();
 const date = () => dayjs().tz("Asia/Jakarta").format("YYYY-MM-DDTHH:mm:ssZ");
 
 export interface ILogger {
+  appName: string;
   event?: Partial<APIGatewayProxyEvent>;
   response?: Partial<APIGatewayProxyResult>;
   context?: Partial<Context>;
@@ -29,6 +30,7 @@ export interface ILoggerMiddleware extends ILogger {
 export const logger = (config?: ILogger) => {
   // set logger child
   let child = p.child({
+    appName: config?.appName,
     date: date(),
   });
 
@@ -49,12 +51,18 @@ export const logger = (config?: ILogger) => {
 };
 
 export const logMiddleware = ({
+  appName,
   event,
   response,
   context,
   coldStart,
 }: ILoggerMiddleware) => {
-  const child = logger({ context }).child({ coldStart });
+  let name = appName;
+  if (appName === "function") {
+    name = context?.functionName as string;
+  }
+
+  const child = logger({ appName: name, context }).child({ coldStart });
   const ev: any = Object.assign({}, event ?? response);
 
   delete ev?.headers;
@@ -66,6 +74,8 @@ export const logMiddleware = ({
   delete ev?.logGroupName;
   delete ev?.logStreamName;
   delete ev?.functionName;
+  delete ev?.functionVersion;
+  delete ev?.stageVariables;
 
   if (ev?.body && typeof ev.body === "string") {
     try {
