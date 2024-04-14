@@ -1,8 +1,7 @@
 {
   "name": "@juniyadi/cloudfront",
   "version": "0.2.1",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "type": "module",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
