@@ -1,5 +1,11 @@
 # @juniyadi/cloudfront
 
+## 0.3.0
+
+### Minor Changes
+
+- b943410: Fixed: "Module not found: Default condition should be last one"
+
 ## 0.2.1
 
 ### Patch Changes
