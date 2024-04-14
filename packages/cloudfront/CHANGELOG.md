@@ -1,5 +1,11 @@
 # @juniyadi/cloudfront
 
+## 0.3.1
+
+### Patch Changes
+
+- 063505b: Set CloudFront to CJS Only
+
 ## 0.3.0
 
 ### Minor Changes
