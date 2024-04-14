@@ -73,49 +73,10 @@ export interface IndexKeyDefinition {
    * Set Index composite
    * @example
    * {
-   *   composite: ["id"]
-   * }
-   *
-   * This example will make composite with first value is BLOG
-   * And second value is slug from attribute
-   * Example: BLOG#this-is-your-slug
-   * Example: BLOG#your-slug
-   * @example
-   * {
-   *  composite: [
-   *   {
-   *    value: "BLOG"
-   *   },
-   *   {
-   *    value: "slug",
-   *    isAttribute: true
-   *   },
-   *  ]
+   *   composite: ["id", "createdAt"]
    * }
    */
-  composite: string[] | ModelIndexComposite[];
-}
-
-export interface ModelIndexComposite {
-  /**
-   * If true, value using from attribute
-   * @type {boolean}
-   */
-  isAttribute?: boolean;
-
-  /**
-   * Set composite value
-   * If isAttribute is true, value is attribute name
-   * @example
-   * {
-   *  value: "slug",
-   *  isAttribute: true
-   * }
-   *
-   *
-   * @type {string}
-   */
-  value: string;
+  composite: string[];
 }
 
 export interface DBOptions {

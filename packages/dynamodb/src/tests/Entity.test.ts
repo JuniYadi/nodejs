@@ -5,47 +5,35 @@ const client = new DynamoDBClient({});
 
 const model = {
   model: {
-    User: {
-      type: "object",
+    id: {
+      type: "string",
       required: true,
+    },
+    name: {
+      type: "string",
+      required: false,
     },
   },
   indexs: {
     pk: {
       pk: {
-        field: "id",
+        field: "pk",
         composite: ["id"],
       },
       sk: {
-        field: "id",
-        composite: ["id"],
+        field: "sk",
+        composite: ["name"],
       },
     },
     createdAt: {
-      index: "ls1sk",
+      index: "ls1Index",
       pk: {
-        field: "createdAt",
-        composite: [
-          {
-            value: "slug",
-            isAttribute: true,
-          },
-          {
-            value: "MESSAGES",
-          },
-        ],
+        field: "pk",
+        composite: ["id"],
       },
       sk: {
-        field: "updatedAt",
-        composite: [
-          {
-            value: "slug",
-            isAttribute: true,
-          },
-          {
-            value: "MESSAGES",
-          },
-        ],
+        field: "ls1sk",
+        composite: ["createdAt"],
       },
     },
   },
@@ -74,5 +62,11 @@ describe("Entity", () => {
     const result = await entity.create(input);
 
     expect(result).toEqual(input);
+  });
+
+  it("should running query method", async () => {
+    const entity = new Entity(model, config);
+
+    const result = await entity.query.pk({ id: "test", name: "yeye" });
   });
 });
