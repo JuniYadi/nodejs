@@ -1,5 +1,11 @@
 # @juniyadi/cloudfront
 
+## 0.3.2
+
+### Patch Changes
+
+- e2d3274: Fixed Entrypoint
+
 ## 0.3.1
 
 ### Patch Changes
