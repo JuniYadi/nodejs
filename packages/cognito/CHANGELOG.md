@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 1.1.0
+
+### Minor Changes
+
+- 137d697: Fixed package.json
+
 ## 1.0.1
 
 ### Patch Changes
