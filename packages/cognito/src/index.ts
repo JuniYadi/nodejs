@@ -13,8 +13,15 @@ import {
   AdminDeleteUserCommandOutput,
   AdminAddUserToGroupCommandOutput,
   AdminEnableUserCommandOutput,
+  AdminInitiateAuthCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
+import {
+  CognitoUser,
+  AuthenticationDetails,
+  CognitoUserPool,
+} from "amazon-cognito-identity-js";
 import { generate } from "@juniyadi/random-string";
+import dayjs from "dayjs";
 
 export interface ICognito {
   region?: string;
@@ -38,6 +45,18 @@ export interface ICognitoInviteUser {
   attributes?: ICognitoAttributes[];
   group?: string;
 }
+
+export interface ICognitoAdminLoginResponse {
+  TokenType: string;
+  ExpiresIn: number;
+  AccessToken: string;
+  IdToken: string;
+  RefreshToken: string;
+  NewDeviceMetadata: {
+    DeviceKey: string | null;
+    DeviceGroupKey: null;
+  };
+};
 
 export class Cognito {
   public region: string;
@@ -289,6 +308,95 @@ export class Cognito {
       UserPoolId: this.userPoolId,
       Username: username,
       GroupName: groupName,
+    });
+
+    return this.cognitoIdentityProvider.send(command);
+  };
+
+  /**
+   * Login as an admin to Cognito User Pool with username and password
+   *
+   * @param username string
+   * @param password string
+   * @returns Promise<ICognitoAdminLoginResponse>
+   *
+   * @example
+   * const cognito = new Cognito();
+   * const response = await cognito.adminLogin("username", "password");
+   * console.log(response);
+   */
+  public adminLogin = async (
+    username: string,
+    password: string
+  ): Promise<ICognitoAdminLoginResponse> => {
+    return new Promise((resolve, reject) => {
+      const authenticationDetails = new AuthenticationDetails({
+        Username: username,
+        Password: password,
+      });
+
+      const userPool = new CognitoUserPool({
+        UserPoolId: this.userPoolId,
+        ClientId: this.clientId,
+      });
+
+      const cognitoUser = new CognitoUser({
+        Username: username,
+        Pool: userPool,
+      });
+
+      cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: (result) => {
+          cognitoUser.getDevice({
+            onSuccess: (device: any) => {
+              const expired = result.getIdToken().getExpiration();
+              const exp1 = dayjs.unix(expired);
+              const exp2 = exp1.diff(dayjs(), "second");
+              const exp3 = exp2 + 1; // add 1 second
+
+              resolve({
+                TokenType: "Bearer",
+                ExpiresIn: exp3,
+                AccessToken: result.getAccessToken().getJwtToken(),
+                IdToken: result.getIdToken().getJwtToken(),
+                RefreshToken: result.getRefreshToken().getToken(),
+                NewDeviceMetadata: {
+                  DeviceKey: device?.Device?.DeviceKey,
+                  DeviceGroupKey: null,
+                },
+              });
+            },
+            onFailure: (err) => {
+              reject(err);
+            },
+          });
+        },
+        onFailure: (err) => {
+          reject(err);
+        },
+      });
+    });
+  };
+
+  /**
+   * Refresh Token for Admin User
+   *
+   * @param refreshToken string
+   * @param deviceKey string
+   * @returns Promise<AdminInitiateAuthCommandOutput>
+   */
+  public adminRefreshToken = async (
+    refreshToken: string,
+    deviceKey: string
+  ) => {
+    const command = new AdminInitiateAuthCommand({
+      UserPoolId: this.userPoolId,
+      ClientId: this.clientId,
+      AuthFlow: "REFRESH_TOKEN_AUTH",
+      AuthParameters: {
+        REFRESH_TOKEN: refreshToken,
+        DEVICE_KEY: deviceKey,
+      },
     });
 
     return this.cognitoIdentityProvider.send(command);
