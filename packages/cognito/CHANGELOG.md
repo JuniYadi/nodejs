@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 1.0.1
+
+### Patch Changes
+
+- aa03c46: Added Function `adminLogin` and `adminRefreshToken`
+
 ## 1.0.0
 
 ### Minor Changes
