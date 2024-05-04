@@ -1,5 +1,11 @@
 # @juniyadi/cloudfront
 
+## 0.4.0
+
+### Minor Changes
+
+- 971583e: fix(version) - Update to Latest Version Package
+
 ## 0.3.2
 
 ### Patch Changes

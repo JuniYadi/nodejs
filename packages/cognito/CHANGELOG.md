@@ -1,5 +1,16 @@
 # @juniyadi/cognito
 
+## 1.0.0
+
+### Minor Changes
+
+- 971583e: fix(version) - Update to Latest Version Package
+
+### Patch Changes
+
+- Updated dependencies [971583e]
+  - @juniyadi/random-string@0.2.0
+
 ## 0.5.1
 
 ### Patch Changes
