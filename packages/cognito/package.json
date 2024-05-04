@@ -42,7 +42,9 @@
     "@juniyadi/tsconfig": "workspace:*",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.8",
+    "amazon-cognito-identity-js": "^6.3.12",
     "aws-sdk-client-mock": "^3.0.0",
+    "dayjs": "^1.11.11",
     "eslint": "^8.57.0",
     "eslint-config-juniyadi": "workspace:*",
     "jest": "^29.7.0",
@@ -57,6 +59,8 @@
   "peerDependencies": {
     "@aws-sdk/client-cognito-identity": "^3.388.0",
     "@aws-sdk/client-cognito-identity-provider": "^3.388.0",
-    "@juniyadi/random-string": "workspace:*"
+    "@juniyadi/random-string": "workspace:*",
+    "amazon-cognito-identity-js": "^6.3.12",
+    "dayjs": "^1.11.11"
   }
 }
