@@ -1,15 +1,15 @@
-import { logger } from "../logger";
+import { p, now } from "../logger";
 
 describe("Logger", () => {
-  it("should return a logger instance", () => {
-    const log = logger();
-    expect(log).toBeDefined();
+  it("should print a date", () => {
+    const date = now();
+
+    expect(date).toBeDefined();
   });
 
-  it("should print a info log", () => {
-    const log = logger();
-    log.info("info");
-
-    expect(log).toBeDefined();
+  it("should print a log", () => {
+    expect(() => {
+      p.info("test");
+    }).not.toThrow();
   });
 });
