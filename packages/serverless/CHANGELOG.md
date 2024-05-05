@@ -1,5 +1,11 @@
 # @juniyadi/serverless
 
+## 1.1.0
+
+### Minor Changes
+
+- 0e96543: Fixed Import Hono App and Response
+
 ## 1.0.0
 
 ### Major Changes
