@@ -1,5 +1,11 @@
 # @juniyadi/serverless
 
+## 1.0.0
+
+### Major Changes
+
+- f9c3848: Replace to Hono Framework
+
 ## 0.2.1
 
 ### Patch Changes
