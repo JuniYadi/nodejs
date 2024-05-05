@@ -16,17 +16,17 @@ type Bindings = {
   lambdaContext: LambdaContext;
 };
 
-const app = new Hono<{ Bindings: Bindings }>();
+const hono = new Hono<{ Bindings: Bindings }>();
 
-app.use(cors());
-app.use(csrf());
-app.use(etag({ weak: true }));
-app.use(compress());
-app.use(secureHeaders());
+hono.use(cors());
+hono.use(csrf());
+hono.use(etag({ weak: true }));
+hono.use(compress());
+hono.use(secureHeaders());
 
 // Custom logger
 let coldStart = true;
-app.use(async (c, next) => {
+hono.use(async (c, next) => {
   // const body = await c.req.json();
   const ua = c.env.event.headers?.["User-Agent"] || "";
   const ip = c.env.event.headers?.["X-Forwarded-For"] || "";
@@ -78,40 +78,4 @@ app.use(async (c, next) => {
   coldStart = false;
 });
 
-// Custom Response
-type IResponseCode = {
-  [key: number]: string;
-};
-
-const responseCode: IResponseCode = {
-  200: "success",
-  400: "Invalid Request!",
-  401: "Unauthorized",
-  403: "Forbidden",
-  404: "Not Found",
-  500: "Internal Server Error",
-};
-
-type IResponse = {
-  code?: keyof typeof responseCode;
-  message?: string;
-  data?: any;
-  errors?: any;
-};
-
-export const setResponse = (c: any, config: IResponse) => {
-  const code = config.code || 200;
-  const message = config.message || responseCode[code];
-
-  // set status code
-  c.status(config.code);
-
-  return c.json({
-    code: config.code,
-    message: message,
-    data: config.data || undefined,
-    errors: config.errors || undefined,
-  });
-};
-
-export default app;
+export const app = hono;

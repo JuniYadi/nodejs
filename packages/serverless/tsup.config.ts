@@ -5,7 +5,7 @@ const env = process.env.NODE_ENV || "development";
 export default defineConfig({
   entry: ["src/**/*.ts", "!src/tests/", "!src/**/*.test.ts"],
   format: ["cjs"],
-  splitting: true,
+  splitting: false,
   treeshake: true,
   sourcemap: env === "development",
   clean: true,
