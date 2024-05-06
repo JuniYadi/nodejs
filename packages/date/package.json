@@ -1,21 +1,21 @@
 {
-  "name": "@juniyadi/serverless",
-  "version": "1.2.0",
-  "main": "./dist/index.js",
+  "name": "@juniyadi/date",
+  "version": "0.0.0",
   "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
   "sideEffects": false,
   "license": "MIT",
   "files": [
     "dist/**"
   ],
-  "homepage": "https://github.com/JuniYadi/nodejs/tree/main/packages/serverless",
   "repository": {
     "type": "git",
     "url": "https://github.com/JuniYadi/nodejs",
-    "directory": "packages/serverless"
+    "directory": "packages/date"
   },
   "scripts": {
-    "build": "tsup",
+    "docs": "typedoc --out docs src/index.ts",
+    "build": "cross-env NODE_ENV=production tsup",
     "dev": "tsup --watch",
     "lint": "eslint \"src/**/*.ts*\"",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
@@ -23,27 +23,23 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
+    "@juniyadi/config-typedoc": "workspace:*",
     "@juniyadi/tsconfig": "workspace:*",
-    "@juniyadi/date": "workspace:*",
-    "@juniyadi/logger": "workspace:*",
-    "@types/aws-lambda": "^8.10.137",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.8",
+    "dayjs": "^1.11.11",
     "eslint": "^8.57.0",
     "eslint-config-juniyadi": "workspace:*",
-    "hono": "^4.3.2",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.2",
     "tsup": "^8.0.2",
+    "typedoc": "^0.25.13",
     "typescript": "^5.4.5"
   },
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "@types/aws-lambda": "^8.10.136",
-    "@juniyadi/date": "workspace:*",
-    "@juniyadi/logger": "workspace:*",
-    "hono": "^4.3.2"
+    "dayjs": "^1.11.11"
   }
 }

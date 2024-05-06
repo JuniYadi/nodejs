@@ -9,7 +9,9 @@ import { csrf } from "hono/csrf";
 import { secureHeaders } from "hono/secure-headers";
 import { compress } from "hono/compress";
 import { etag } from "hono/etag";
-import { p, now } from "./logger";
+import { p } from "@juniyadi/logger";
+import { now } from "@juniyadi/date";
+import { setResponse } from "./response";
 
 type Bindings = {
   event: LambdaEvent;
@@ -57,7 +59,7 @@ hono.use(async (c, next) => {
     delete query["device_key"];
   }
 
-  p.info({
+  p.parent({
     date: now(),
     coldStart,
     method: c.req.method,
@@ -72,10 +74,17 @@ hono.use(async (c, next) => {
     body: await body(),
   });
 
+  p.info({ message: "Request" })
+
   await next();
 
   // update coldStart
   coldStart = false;
+});
+
+hono.notFound((c) => {
+  p.error({ httpCode: 404, message: "Not Found" })
+  return setResponse(c, { code: 404 });
 });
 
 export const app = hono;

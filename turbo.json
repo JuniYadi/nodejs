@@ -10,7 +10,9 @@
     "COGNITO_CLIENT_ID",
     "CLOUDFRONT_PRIVATE_KEY",
     "CLOUDFRONT_PUBLIC_KEY_ID",
-    "CLOUDFRONT_DOMAIN"
+    "CLOUDFRONT_DOMAIN",
+    "TIMEZONE",
+    "LOG_LEVEL"
   ],
   "pipeline": {
     "build": {

@@ -1,0 +1,4 @@
+{
+  "extends": ["@juniyadi/config-typedoc/typedoc.json"],
+  "entryPoints": ["./src/index.ts"]
+}
