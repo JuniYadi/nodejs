@@ -1,5 +1,12 @@
 # @juniyadi/serverless
 
+## 1.2.0
+
+### Minor Changes
+
+- 2415a68: - Added Export handle
+  - Update Package.json
+
 ## 1.1.0
 
 ### Minor Changes
