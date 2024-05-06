@@ -1,5 +1,18 @@
 # @juniyadi/serverless
 
+## 2.0.0
+
+### Minor Changes
+
+- 9976821: Integrate to `@juniyadi/date` and `@juniyadi/logger`
+
+### Patch Changes
+
+- Updated dependencies [9976821]
+- Updated dependencies [9976821]
+  - @juniyadi/date@0.1.0
+  - @juniyadi/logger@0.1.0
+
 ## 1.2.0
 
 ### Minor Changes
