@@ -8,6 +8,12 @@
   "files": [
     "dist/**"
   ],
+  "homepage": "https://github.com/JuniYadi/nodejs/tree/main/packages/serverless",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JuniYadi/nodejs",
+    "directory": "packages/serverless"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
