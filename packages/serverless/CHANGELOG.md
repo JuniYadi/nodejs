@@ -1,5 +1,12 @@
 # @juniyadi/serverless
 
+## 3.0.0
+
+### Patch Changes
+
+- Updated dependencies [eaa1e3c]
+  - @juniyadi/date@0.2.0
+
 ## 2.0.0
 
 ### Minor Changes

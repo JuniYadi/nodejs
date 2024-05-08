@@ -1,5 +1,16 @@
 # @juniyadi/dynamodb
 
+## 1.0.0
+
+### Minor Changes
+
+- eaa1e3c: Migrate to ElectroDB, Ulidx and @juniyadi/date
+
+### Patch Changes
+
+- Updated dependencies [eaa1e3c]
+  - @juniyadi/date@0.2.0
+
 ## 0.2.1
 
 ### Patch Changes
