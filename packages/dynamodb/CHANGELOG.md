@@ -1,5 +1,12 @@
 # @juniyadi/dynamodb
 
+## 1.1.1
+
+### Patch Changes
+
+- Updated dependencies [dfe8cb9]
+  - @juniyadi/date@0.2.1
+
 ## 1.1.0
 
 ### Minor Changes
