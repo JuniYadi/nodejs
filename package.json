@@ -17,7 +17,7 @@
     "test:watch": "turbo run test:watch"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.2",
+    "@changesets/cli": "^2.27.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.46.0",
     "eslint-config-juniyadi": "workspace:*",

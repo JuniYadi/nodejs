@@ -1,5 +1,5 @@
 ---
-"@juniyadi/date": minor
+"@juniyadi/date": patch
 ---
 
 Update Comment
