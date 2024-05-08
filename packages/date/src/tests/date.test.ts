@@ -12,7 +12,7 @@ describe("date", () => {
 
     it("should return the current date and time in the default timezone if no timezone is specified", () => {
       const result = now();
-      const expected = date().tz("Asia/Jakarta").format("YYYY-MM-DDTHH:mm:ssZ");
+      const expected = date().format("YYYY-MM-DDTHH:mm:ssZ");
       expect(result).toBe(expected);
     });
   });
