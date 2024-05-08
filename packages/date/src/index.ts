@@ -24,19 +24,19 @@ export const date = dayjs;
 
 export const now = (config?: IDayjs) =>
   dayjs()
-    .tz(config?.timezone || TIMEZONE)
+    .tz(config?.timezone)
     .format(config?.format || "YYYY-MM-DDTHH:mm:ssZ");
 
 export const fromNow = (date: string) => dayjs(date).fromNow();
 
 export const fromDate = (date: string | Date, config?: IDayjs) =>
   dayjs(date)
-    .tz(config?.timezone || TIMEZONE)
+    .tz(config?.timezone)
     .format(config?.format || "dddd, DD MMM YYYY HH:mm:ss Z");
 
 export const fromDateHuman = (date: string | Date, config?: IDayjs) =>
   dayjs()
-    .tz(config?.timezone || TIMEZONE)
+    .tz(config?.timezone)
     .to(dayjs(date));
 
 export const timestampToDate = (timestamp: number, config?: IDayjs) =>
