@@ -1,5 +1,11 @@
 # @juniyadi/date
 
+## 0.2.0
+
+### Minor Changes
+
+- eaa1e3c: Added more function date
+
 ## 0.1.0
 
 ### Minor Changes
