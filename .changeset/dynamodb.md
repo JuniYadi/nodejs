@@ -1,3 +1,0 @@
----
-"@juniyadi/dynamodb": minor
----

@@ -1,5 +1,11 @@
 # @juniyadi/dynamodb
 
+## 1.1.0
+
+### Minor Changes
+
+- 90b52ea:
+
 ## 1.0.0
 
 ### Minor Changes
