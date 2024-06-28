@@ -1,5 +1,16 @@
 # @juniyadi/cognito
 
+## 2.0.0
+
+### Minor Changes
+
+- f0d70d7: Update Package Version
+
+### Patch Changes
+
+- Updated dependencies [f0d70d7]
+  - @juniyadi/random-string@0.3.0
+
 ## 1.1.0
 
 ### Minor Changes
