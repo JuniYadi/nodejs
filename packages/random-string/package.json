@@ -40,14 +40,14 @@
     "@juniyadi/config-typedoc": "workspace:*",
     "@juniyadi/tsconfig": "workspace:*",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.12.8",
+    "@types/node": "^20.14.9",
     "eslint": "^8.57.0",
     "eslint-config-juniyadi": "workspace:*",
     "jest": "^29.7.0",
-    "ts-jest": "^29.1.2",
-    "tsup": "^8.0.2",
-    "typedoc": "^0.25.13",
-    "typescript": "^5.4.5"
+    "ts-jest": "^29.1.5",
+    "tsup": "^8.1.0",
+    "typedoc": "^0.26.3",
+    "typescript": "^5.5.2"
   },
   "publishConfig": {
     "access": "public"
