@@ -1,5 +1,6 @@
 {
   "private": false,
+  "name": "@juniyadi/nodejs",
   "publishConfig": {
     "access": "public"
   },
