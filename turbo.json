@@ -14,7 +14,7 @@
     "TIMEZONE",
     "LOG_LEVEL"
   ],
-  "pipeline": {
+  "tasks": {
     "build": {
       "outputs": ["dist/**", "storybook-static/**"],
       "dependsOn": ["^build"],
