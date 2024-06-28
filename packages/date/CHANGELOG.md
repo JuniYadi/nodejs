@@ -1,5 +1,11 @@
 # @juniyadi/date
 
+## 0.3.0
+
+### Minor Changes
+
+- f0d70d7: Update Package Version
+
 ## 0.2.1
 
 ### Patch Changes

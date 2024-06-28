@@ -1,5 +1,17 @@
 # @juniyadi/serverless
 
+## 4.0.0
+
+### Minor Changes
+
+- f0d70d7: Update Package Version
+
+### Patch Changes
+
+- Updated dependencies [f0d70d7]
+  - @juniyadi/date@0.3.0
+  - @juniyadi/logger@0.2.0
+
 ## 3.0.1
 
 ### Patch Changes
