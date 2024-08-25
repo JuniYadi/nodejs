@@ -1,5 +1,11 @@
 # @juniyadi/serverless
 
+## 4.1.0
+
+### Minor Changes
+
+- 4568963: Update Package Version
+
 ## 4.0.0
 
 ### Minor Changes
