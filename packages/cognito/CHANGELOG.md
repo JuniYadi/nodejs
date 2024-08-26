@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 2.1.0
+
+### Minor Changes
+
+- 5015095: Update Package Version
+
 ## 2.0.0
 
 ### Minor Changes
