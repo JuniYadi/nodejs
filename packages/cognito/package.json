@@ -23,8 +23,8 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@aws-sdk/client-cognito-identity": "^3.606.0",
-    "@aws-sdk/client-cognito-identity-provider": "^3.606.0",
+    "@aws-sdk/client-cognito-identity": "^3.637.0",
+    "@aws-sdk/client-cognito-identity-provider": "^3.637.0",
     "@juniyadi/config-typedoc": "workspace:*",
     "@juniyadi/random-string": "workspace:*",
     "@juniyadi/tsconfig": "workspace:*",
@@ -45,8 +45,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@aws-sdk/client-cognito-identity": "^3.388.0",
-    "@aws-sdk/client-cognito-identity-provider": "^3.388.0",
+    "@aws-sdk/client-cognito-identity": "^3.637.0",
+    "@aws-sdk/client-cognito-identity-provider": "^3.637.0",
     "@juniyadi/random-string": "workspace:*",
     "amazon-cognito-identity-js": "^6.3.12",
     "dayjs": "^1.11.11"

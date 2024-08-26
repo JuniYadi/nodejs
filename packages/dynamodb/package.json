@@ -17,7 +17,8 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@aws-sdk/lib-dynamodb": "^3.606.0",
+    "@aws-sdk/client-dynamodb": "^3.637.0",
+    "@aws-sdk/lib-dynamodb": "^3.637.0",
     "@juniyadi/config-typedoc": "workspace:*",
     "@juniyadi/date": "workspace:*",
     "@juniyadi/tsconfig": "workspace:*",
@@ -37,8 +38,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@aws-sdk/client-dynamodb": "^3.388.0",
-    "@aws-sdk/lib-dynamodb": "^3.388.0",
+    "@aws-sdk/client-dynamodb": "^3.637.0",
+    "@aws-sdk/lib-dynamodb": "^3.637.0",
     "@juniyadi/date": "workspace:*",
     "electrodb": "^2.14.0",
     "ulidx": "^2.3.0"

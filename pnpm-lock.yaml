@@ -36,7 +36,7 @@ importers:
   packages/cloudfront:
     devDependencies:
       '@aws-sdk/cloudfront-signer':
-        specifier: ^3.598.0
+        specifier: ^3.621.0
         version: 3.621.0
       '@juniyadi/config-typedoc':
         specifier: workspace:*
@@ -81,10 +81,10 @@ importers:
   packages/cognito:
     devDependencies:
       '@aws-sdk/client-cognito-identity':
-        specifier: ^3.606.0
+        specifier: ^3.637.0
         version: 3.637.0
       '@aws-sdk/client-cognito-identity-provider':
-        specifier: ^3.606.0
+        specifier: ^3.637.0
         version: 3.637.0
       '@juniyadi/config-typedoc':
         specifier: workspace:*
@@ -174,13 +174,12 @@ importers:
         version: 5.5.4
 
   packages/dynamodb:
-    dependencies:
-      '@aws-sdk/client-dynamodb':
-        specifier: ^3.388.0
-        version: 3.637.0
     devDependencies:
+      '@aws-sdk/client-dynamodb':
+        specifier: ^3.637.0
+        version: 3.637.0
       '@aws-sdk/lib-dynamodb':
-        specifier: ^3.606.0
+        specifier: ^3.637.0
         version: 3.637.0(@aws-sdk/client-dynamodb@3.637.0)
       '@juniyadi/config-typedoc':
         specifier: workspace:*
