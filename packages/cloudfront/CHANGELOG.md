@@ -1,5 +1,11 @@
 # @juniyadi/cloudfront
 
+## 0.6.0
+
+### Minor Changes
+
+- 5015095: Update Package Version
+
 ## 0.5.0
 
 ### Minor Changes
