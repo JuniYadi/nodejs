@@ -1,5 +1,11 @@
 # @juniyadi/cognito
 
+## 2.2.0
+
+### Minor Changes
+
+- 84a35bb: Update Remember Me Opt-In
+
 ## 2.1.0
 
 ### Minor Changes
