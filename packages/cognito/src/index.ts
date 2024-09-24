@@ -52,11 +52,11 @@ export interface ICognitoAdminLoginResponse {
   AccessToken: string;
   IdToken: string;
   RefreshToken: string;
-  NewDeviceMetadata: {
+  NewDeviceMetadata?: {
     DeviceKey: string | null;
     DeviceGroupKey: null;
   };
-};
+}
 
 export class Cognito {
   public region: string;
@@ -327,9 +327,12 @@ export class Cognito {
    */
   public adminLogin = async (
     username: string,
-    password: string
+    password: string,
+    rememberMe = false
   ): Promise<ICognitoAdminLoginResponse> => {
-    return new Promise((resolve, reject) => {
+    try {
+      let device;
+
       const authenticationDetails = new AuthenticationDetails({
         Username: username,
         Password: password,
@@ -345,37 +348,50 @@ export class Cognito {
         Pool: userPool,
       });
 
-      cognitoUser.authenticateUser(authenticationDetails, {
-        onSuccess: (result) => {
-          cognitoUser.getDevice({
-            onSuccess: (device: any) => {
-              const expired = result.getIdToken().getExpiration();
-              const exp1 = dayjs.unix(expired);
-              const exp2 = exp1.diff(dayjs(), "second");
-              const exp3 = exp2 + 1; // add 1 second
-
-              resolve({
-                TokenType: "Bearer",
-                ExpiresIn: exp3,
-                AccessToken: result.getAccessToken().getJwtToken(),
-                IdToken: result.getIdToken().getJwtToken(),
-                RefreshToken: result.getRefreshToken().getToken(),
-                NewDeviceMetadata: {
-                  DeviceKey: device?.Device?.DeviceKey,
-                  DeviceGroupKey: null,
-                },
-              });
-            },
-            onFailure: (err) => {
-              reject(err);
-            },
-          });
-        },
-        onFailure: (err) => {
-          reject(err);
-        },
+      const result = await new Promise<any>((resolve, reject) => {
+        cognitoUser.authenticateUser(authenticationDetails, {
+          onSuccess: resolve,
+          onFailure: reject,
+        });
       });
-    });
+
+      if (rememberMe) {
+        await new Promise<any>((resolve, reject) => {
+          cognitoUser.setDeviceStatusRemembered({
+            onSuccess: resolve,
+            onFailure: reject,
+          });
+        });
+
+        const device = await new Promise<any>((resolve, reject) => {
+          cognitoUser.getDevice({
+            onSuccess: resolve,
+            onFailure: reject,
+          });
+        });
+      }
+
+      const expired = result.getIdToken().getExpiration();
+      const exp1 = dayjs.unix(expired);
+      const exp2 = exp1.diff(dayjs(), "second");
+      const exp3 = exp2 + 1; // add 1 second
+
+      return {
+        TokenType: "Bearer",
+        ExpiresIn: exp3,
+        AccessToken: result.getAccessToken().getJwtToken(),
+        IdToken: result.getIdToken().getJwtToken(),
+        RefreshToken: result.getRefreshToken().getToken(),
+        NewDeviceMetadata: device?.Device
+          ? {
+              DeviceKey: device.Device.DeviceKey,
+              DeviceGroupKey: null,
+            }
+          : undefined,
+      };
+    } catch (err) {
+      throw err;
+    }
   };
 
   /**
