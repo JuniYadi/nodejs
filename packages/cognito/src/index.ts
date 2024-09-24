@@ -363,7 +363,7 @@ export class Cognito {
           });
         });
 
-        const device = await new Promise<any>((resolve, reject) => {
+        device = await new Promise<any>((resolve, reject) => {
           cognitoUser.getDevice({
             onSuccess: resolve,
             onFailure: reject,
