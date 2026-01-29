@@ -41,7 +41,7 @@
     "@juniyadi/tsconfig": "workspace:*",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.9",
-    "eslint": "^8.57.0",
+    "eslint": "^9.26.0",
     "eslint-config-juniyadi": "workspace:*",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.5",

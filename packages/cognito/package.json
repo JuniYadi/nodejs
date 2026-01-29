@@ -33,7 +33,7 @@
     "amazon-cognito-identity-js": "^6.3.12",
     "aws-sdk-client-mock": "^3.1.0",
     "dayjs": "^1.11.11",
-    "eslint": "^8.57.0",
+    "eslint": "^9.26.0",
     "eslint-config-juniyadi": "workspace:*",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.5",
